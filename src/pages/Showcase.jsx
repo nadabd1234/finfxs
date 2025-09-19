@@ -119,11 +119,9 @@ const Showcase = () => {
     <section
       ref={sectionRef}
       id="showcase"
-      className={`py-20 ${
-        theme === 'owl' ? 'bg-owl-primary' : 'bg-falcon-dark'
-      }`}
+      className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 py-20"
     >
-      <div className="container mx-auto px-6">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           className="animate-on-scroll text-center mb-16"

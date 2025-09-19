@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTheme } from '../context/ThemeContext';
+import { Mail, Phone, MapPin, MessageCircle, Twitter, Facebook, Youtube, Linkedin } from 'lucide-react';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -59,15 +60,15 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: '📧',
+      Icon: Mail,
       title: 'Email',
       value: 'hello@finfxs.com',
-      description: theme === 'owl' 
+      description: theme === 'owl'
         ? 'Send us a thoughtful message and we\'ll respond within 24 hours'
         : 'Get instant responses to your inquiries'
     },
     {
-      icon: '📞',
+      Icon: Phone,
       title: 'Phone',
       value: '+1 (555) 123-4567',
       description: theme === 'owl'
@@ -75,7 +76,7 @@ const Contact = () => {
         : '24/7 support hotline for urgent matters'
     },
     {
-      icon: '📍',
+      Icon: MapPin,
       title: 'Office',
       value: 'New York, NY',
       description: theme === 'owl'
@@ -83,7 +84,7 @@ const Contact = () => {
         : 'Global headquarters with satellite offices worldwide'
     },
     {
-      icon: '💬',
+      Icon: MessageCircle,
       title: 'Live Chat',
       value: 'Available Now',
       description: theme === 'owl'
@@ -164,7 +165,9 @@ const Contact = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, idx) => (
               <div key={idx} className="p-6 rounded-xl border border-slate-600/50 bg-slate-800/40">
-                <div className="text-3xl mb-3">{info.icon}</div>
+                <div className="w-10 h-10 rounded-full bg-slate-700/60 border border-slate-600/60 flex items-center justify-center mb-3 text-white">
+                  <info.Icon className="w-5 h-5" />
+                </div>
                 <div className="text-white font-semibold">{info.title}</div>
                 <div className="text-teal-300 text-sm">{info.value}</div>
                 <div className="text-gray-400 text-xs mt-1">{info.description}</div>
@@ -362,17 +365,19 @@ const Contact = () => {
 
             <div>
               <div className="text-sm font-semibold mb-3" style={{ color: currentTheme.colors.text }}>Social Media</div>
-              <div className="flex items-center gap-3">
-                {['twitter','facebook','youtube','linkedin'].map((key) => (
-                  <a
-                    key={key}
-                    href="#"
-                    className="w-10 h-10 rounded-full border border-slate-600/60 bg-slate-800/40 flex items-center justify-center text-white hover:bg-slate-700/60 transition-colors"
-                    aria-label={key}
-                  >
-                    <span className="text-lg">{key === 'twitter' ? '𝕏' : key === 'facebook' ? 'f' : key === 'youtube' ? '▶' : 'in'}</span>
-                  </a>
-                ))}
+              <div className="flex items-center gap-3 text-white">
+                <a href="#" aria-label="twitter" className="w-10 h-10 rounded-full border border-slate-600/60 bg-slate-800/40 flex items-center justify-center hover:bg-slate-700/60 transition-colors">
+                  <Twitter className="w-5 h-5" />
+                </a>
+                <a href="#" aria-label="facebook" className="w-10 h-10 rounded-full border border-slate-600/60 bg-slate-800/40 flex items-center justify-center hover:bg-slate-700/60 transition-colors">
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a href="#" aria-label="youtube" className="w-10 h-10 rounded-full border border-slate-600/60 bg-slate-800/40 flex items-center justify-center hover:bg-slate-700/60 transition-colors">
+                  <Youtube className="w-5 h-5" />
+                </a>
+                <a href="#" aria-label="linkedin" className="w-10 h-10 rounded-full border border-slate-600/60 bg-slate-800/40 flex items-center justify-center hover:bg-slate-700/60 transition-colors">
+                  <Linkedin className="w-5 h-5" />
+                </a>
               </div>
             </div>
           </motion.div>

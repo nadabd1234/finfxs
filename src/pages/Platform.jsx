@@ -4,7 +4,8 @@ import { Download, ArrowRight } from "lucide-react";
 
 const Platforms = () => {
   return (
-    <div className="container mx-auto px-6 py-24">
+    <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 py-20">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           <span className="text-foreground">Platforms & </span>
@@ -84,7 +85,8 @@ const Platforms = () => {
           Download Integration Spec
         </Button>
       </div>
-    </div>
+      </div>
+    </section>
   );
 };
 

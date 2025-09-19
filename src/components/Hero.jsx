@@ -169,7 +169,7 @@ const Hero = () => {
             <img
               src={frameSvg}
               alt="FINFX Backend Solutions Interface showing risk management tools, platform configurations, and support systems"
-              className="w-full max-w-6xl h-auto object-contain"
+              className="w-full max-w-6xl h-auto object-contain filter grayscale"
               loading="eager"
               decoding="async"
             />
@@ -190,7 +190,7 @@ const Hero = () => {
             <img
               src={flashbackSvg}
               alt="Risk Management Dashboard displaying real-time monitoring, risk analytics, and operational controls"
-              className="w-full max-w-6xl h-auto object-contain"
+              className="w-full max-w-6xl h-auto object-contain filter grayscale"
               loading="lazy"
               decoding="async"
             />
@@ -213,7 +213,7 @@ const Hero = () => {
               <img
                 src={jenisShadowSvg}
                 alt="Platform Support Services showing MT4, MT5, DX Trade integrations and technical expertise"
-                className="w-full max-w-3xl h-auto object-contain"
+                className="w-full max-w-3xl h-auto object-contain filter grayscale"
                 loading="lazy"
                 decoding="async"
               />
@@ -239,26 +239,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Section 4: Service Capabilities */}
-        <div className="py-16 sm:py-20 lg:py-24">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Comprehensive Service Portfolio
-            </h2>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              End-to-end backend solutions for brokers, exchanges, and trading platforms
-            </p>
-          </div>
-          <div className="flex items-center justify-center">
-            <img
-              src={frame8Svg}
-              alt="Service Portfolio showing Risk Management, Dealing Support, Platform Setup, CRM Support, and Custom Development"
-              className="w-full max-w-6xl h-auto object-contain"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </div>
+        
 
         {/* Section 5: Service Performance Metrics */}
         <div ref={metricsRef} className="py-16 sm:py-20 lg:py-24">

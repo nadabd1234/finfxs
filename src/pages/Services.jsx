@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTheme } from "../context/ThemeContext";
+import frame8Svg from "../assets/svg/Frame 8.svg";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -96,11 +97,9 @@ const Service = () => {
     <section
       ref={sectionRef}
       id="services"
-      className={`py-20 ${
-        theme === "owl" ? "bg-owl-primary" : "bg-falcon-dark"
-      }`}
+      className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 py-20"
     >
-      <div className="container mx-auto px-6">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           className="animate-on-scroll text-center mb-16"
@@ -125,6 +124,25 @@ const Service = () => {
             Comprehensive backend solutions designed to power your fintech
             business with enterprise-grade reliability and performance.
           </p>
+        </motion.div>
+
+        {/* Service Capabilities Visual */}
+        <motion.div
+          className="animate-on-scroll mb-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex items-center justify-center">
+            <img
+              src={frame8Svg}
+              alt="Service Portfolio showing Risk Management, Dealing Support, Platform Setup, CRM Support, and Custom Development"
+              className="w-full max-w-6xl h-auto object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </motion.div>
 
         {/* Services Grid */}
