@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useTheme } from '../context/ThemeContext';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTheme } from '../context/ThemeContext';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -22,7 +22,8 @@ const Contact = () => {
   useEffect(() => {
     const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
     elements?.forEach((element) => {
-      gsap.fromTo(element, 
+      gsap.fromTo(
+        element,
         { y: 50, opacity: 0 },
         {
           y: 0,
@@ -33,8 +34,8 @@ const Contact = () => {
             trigger: element,
             start: 'top 80%',
             end: 'bottom 20%',
-            toggleActions: 'play none none reverse'
-          }
+            toggleActions: 'play none none reverse',
+          },
         }
       );
     });
@@ -47,10 +48,13 @@ const Contact = () => {
     });
   };
 
+  const [submitted, setSubmitted] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    // Simulate submit
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 4000);
   };
 
   const contactInfo = [
@@ -100,37 +104,80 @@ const Contact = () => {
     <section
       ref={sectionRef}
       id="contact"
-      className={`py-20 ${
-        theme === 'owl' ? 'bg-owl-primary' : 'bg-falcon-dark'
-      }`}
+      className={`relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 py-20`}
     >
-      <div className="container mx-auto px-6">
-        {/* Header */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Hero header with right image */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-16">
+          <motion.div
+            className="animate-on-scroll text-center lg:text-left"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2
+              className="text-4xl md:text-6xl font-bold mb-6"
+              style={{
+                fontFamily: currentTheme.fonts.heading,
+                color: currentTheme.colors.text,
+              }}
+            >
+              {theme === 'owl' ? 'Contact Us' : 'Contact Us'}
+            </h2>
+            <p
+              className="text-xl max-w-3xl lg:max-w-xl mx-auto lg:mx-0"
+              style={{ color: currentTheme.colors.muted }}
+            >
+              {theme === 'owl'
+                ? 'Let\'s talk about your backend needs. Our team responds within 24 hours.'
+                : 'Talk to our experts. We\'ll help you move fast with reliable solutions.'}
+            </p>
+          </motion.div>
+          <motion.div
+            className="animate-on-scroll order-first lg:order-last"
+            initial={{ opacity: 0, scale: 0.9, y: 30 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="mx-auto max-w-md w-full h-72 sm:h-80 lg:h-96 overflow-hidden rounded-[40px] rounded-t-[160px] border border-slate-600/60 bg-slate-800/40 backdrop-blur-sm flex items-center justify-center">
+              <img src="/vite.svg" alt="Office" className="w-2/3 h-2/3 object-contain opacity-80" />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Contact info row */}
         <motion.div
-          className="animate-on-scroll text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
+          className="animate-on-scroll mb-12"
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
           viewport={{ once: true }}
         >
-          <h2
-            className="text-4xl md:text-6xl font-bold mb-6"
-            style={{
-              fontFamily: currentTheme.fonts.heading,
-              color: currentTheme.colors.text,
-            }}
+          <h3
+            className="text-xl font-bold mb-4"
+            style={{ color: currentTheme.colors.text, fontFamily: currentTheme.fonts.heading }}
           >
-            {theme === 'owl' ? 'Get in Touch' : 'Connect With Us'}
-          </h2>
-          <p
-            className="text-xl max-w-3xl mx-auto"
-            style={{ color: currentTheme.colors.muted }}
-          >
-            {theme === 'owl'
-              ? 'We\'d love to hear from you. Send us a message and we\'ll respond thoughtfully and promptly.'
-              : 'Ready to get started? Contact us now for lightning-fast responses and immediate assistance.'}
-          </p>
+            {theme === 'owl' ? 'Contact Information' : 'Contact Information'}
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {contactInfo.map((info, idx) => (
+              <div key={idx} className="p-6 rounded-xl border border-slate-600/50 bg-slate-800/40">
+                <div className="text-3xl mb-3">{info.icon}</div>
+                <div className="text-white font-semibold">{info.title}</div>
+                <div className="text-teal-300 text-sm">{info.value}</div>
+                <div className="text-gray-400 text-xs mt-1">{info.description}</div>
+              </div>
+            ))}
+          </div>
         </motion.div>
+
+        {submitted && (
+          <div className="mb-6 max-w-3xl mx-auto rounded-xl border border-teal-500/40 bg-teal-500/10 text-teal-200 px-4 py-3 text-center">
+            Message sent successfully. Our team will get back to you shortly.
+          </div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
@@ -141,96 +188,20 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3
-              className="text-3xl font-bold mb-8"
+            {/* Left column: Form card */}
+            <div
+              className="p-6 rounded-2xl border border-slate-600/60 bg-slate-800/50 backdrop-blur-sm shadow-lg"
               style={{
-                fontFamily: currentTheme.fonts.heading,
-                color: currentTheme.colors.text,
+                boxShadow: '0 10px 30px rgba(0,0,0,0.25)'
               }}
             >
-              {theme === 'owl' ? 'Contact Information' : 'Get Connected'}
-            </h3>
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ x: 10 }}
-                  className={`p-6 rounded-xl ${
-                    theme === 'owl'
-                      ? 'bg-owl-secondary/20 hover:bg-owl-accent/10'
-                      : 'bg-gray-800/30 hover:bg-falcon-primary/5'
-                  } transition-all duration-300`}
-                >
-                  <div className="flex items-start space-x-4">
-                    <div className="text-3xl">{info.icon}</div>
-                    <div>
-                      <h4
-                        className="text-xl font-semibold mb-2"
-                        style={{ color: currentTheme.colors.text }}
-                      >
-                        {info.title}
-                      </h4>
-                      <p
-                        className="text-lg font-medium mb-2"
-                        style={{ color: currentTheme.colors.accent }}
-                      >
-                        {info.value}
-                      </p>
-                      <p
-                        className="text-sm"
-                        style={{ color: currentTheme.colors.muted }}
-                      >
-                        {info.description}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Additional Info */}
-            <motion.div
-              className="mt-12 p-6 rounded-xl"
-              style={{
-                backgroundColor: currentTheme.colors.accent + '20',
-                border: `1px solid ${currentTheme.colors.accent}40`
-              }}
-            >
-              <h4
-                className="text-lg font-semibold mb-3"
-                style={{ color: currentTheme.colors.accent }}
+              <h3
+                className="text-2xl font-bold mb-6"
+                style={{ color: currentTheme.colors.text, fontFamily: currentTheme.fonts.heading }}
               >
-                {theme === 'owl' ? 'Response Time' : 'Response Time'}
-              </h4>
-              <p
-                className="text-sm"
-                style={{ color: currentTheme.colors.muted }}
-              >
-                {theme === 'owl'
-                  ? 'We typically respond to all inquiries within 24 hours during business days. For urgent matters, please call our support line.'
-                  : 'Average response time: < 5 minutes for chat, < 1 hour for email, instant for phone calls.'}
-              </p>
-            </motion.div>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.div
-            className="animate-on-scroll"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <h3
-              className="text-3xl font-bold mb-8"
-              style={{
-                fontFamily: currentTheme.fonts.heading,
-                color: currentTheme.colors.text,
-              }}
-            >
-              {theme === 'owl' ? 'Send us a Message' : 'Quick Contact'}
-            </h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+                {theme === 'owl' ? 'Get In Touch!' : 'Get In Touch!'}
+              </h3>
+              <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -360,8 +331,72 @@ const Contact = () => {
                 {theme === 'owl' ? 'Send Message' : 'Send Now'}
               </motion.button>
             </form>
+            </div>
+          </motion.div>
+
+          {/* Right column: Map + Social */}
+          <motion.div
+            className="animate-on-scroll"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <h3
+              className="text-3xl font-bold mb-4"
+              style={{ color: currentTheme.colors.text, fontFamily: currentTheme.fonts.heading }}
+            >
+              {theme === 'owl' ? 'Our Location' : 'Our Location'}
+            </h3>
+            <div className="rounded-2xl overflow-hidden border border-slate-600/60 shadow-lg mb-6 bg-slate-800/40">
+              <iframe
+                title="FINFX Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9942.214!2d-0.1195!3d51.5033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sen!2suk!4v1610000000000"
+                width="100%"
+                height="360"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+
+            <div>
+              <div className="text-sm font-semibold mb-3" style={{ color: currentTheme.colors.text }}>Social Media</div>
+              <div className="flex items-center gap-3">
+                {['twitter','facebook','youtube','linkedin'].map((key) => (
+                  <a
+                    key={key}
+                    href="#"
+                    className="w-10 h-10 rounded-full border border-slate-600/60 bg-slate-800/40 flex items-center justify-center text-white hover:bg-slate-700/60 transition-colors"
+                    aria-label={key}
+                  >
+                    <span className="text-lg">{key === 'twitter' ? '𝕏' : key === 'facebook' ? 'f' : key === 'youtube' ? '▶' : 'in'}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
+
+        {/* Newsletter CTA */}
+        <motion.div
+          className="animate-on-scroll mt-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <div className="rounded-2xl border border-slate-600/60 bg-slate-800/50 p-6 md:p-10 flex flex-col md:flex-row items-center gap-4 md:gap-6">
+            <div className="flex-1">
+              <div className="text-2xl font-bold text-white">Our Newsletter</div>
+              <div className="text-gray-300 text-sm">Get occasional updates about new services and platform support.</div>
+            </div>
+            <form className="flex w-full md:w-auto gap-3">
+              <input type="email" placeholder="Email" className="flex-1 md:w-96 px-4 py-3 rounded-lg bg-transparent border border-slate-600/60 text-white outline-none" />
+              <button type="submit" className="px-6 py-3 rounded-lg font-semibold bg-teal-600 hover:bg-teal-700 text-white">Submit</button>
+            </form>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
