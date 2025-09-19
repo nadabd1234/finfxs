@@ -1,262 +1,219 @@
-import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { useTheme } from '../context/ThemeContext';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import React, { useEffect, useRef, useState } from 'react';
 
 const About = () => {
-  const { theme, currentTheme } = useTheme();
+  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
-    elements?.forEach((element) => {
-      gsap.fromTo(element, 
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: element,
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleActions: 'play none none reverse'
-          }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
         }
-      );
-    });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
-  const values = [
+  const coreServices = [
     {
-      icon: '🎯',
-      title: theme === 'owl' ? 'Precision' : 'Accuracy',
-      description: theme === 'owl' 
-        ? 'Every decision is made with careful consideration and deep analysis'
-        : 'Lightning-fast execution with pinpoint accuracy in every transaction'
+      icon: '🛡️',
+      title: 'Risk Management',
+      description: '24/7 transparent risk monitoring with dynamic solutions that help brokers tap into the value of their order flow',
+      stats: '99.97% Uptime'
     },
     {
-      icon: '🔒',
-      title: 'Security',
-      description: theme === 'owl'
-        ? 'Robust security measures built on years of financial expertise'
-        : 'Military-grade encryption and real-time threat monitoring'
+      icon: '⚙️',
+      title: 'Platform Support',
+      description: 'Expert setup and maintenance for MT4, MT5, DX Trade with seamless liquidity provider connections',
+      stats: '47+ Platforms'
     },
     {
-      icon: '🚀',
-      title: theme === 'owl' ? 'Innovation' : 'Performance',
-      description: theme === 'owl'
-        ? 'Thoughtful innovation that enhances rather than disrupts'
-        : 'Cutting-edge technology optimized for maximum speed and efficiency'
+      icon: '📞',
+      title: 'Dealing Support',
+      description: 'Professional dealing room services with decades of collective industry experience',
+      stats: '24/7 Support'
     },
     {
-      icon: '🤝',
-      title: 'Trust',
-      description: theme === 'owl'
-        ? 'Building lasting relationships through transparency and reliability'
-        : 'Instant trust through consistent, high-performance delivery'
+      icon: '💻',
+      title: 'Custom Development',
+      description: 'Tailored backend solutions and integrations designed for your specific business needs',
+      stats: '100% Custom'
     }
   ];
 
   const team = [
     {
-      name: 'Sarah Chen',
-      role: theme === 'owl' ? 'Chief Wisdom Officer' : 'Chief Technology Officer',
-      image: '👩‍💼',
-      description: theme === 'owl'
-        ? '20+ years in financial strategy and risk management'
-        : 'Former tech lead at major fintech unicorns'
+      name: 'Alex Thompson',
+      role: 'Chief Technology Officer',
+      image: '👨‍💼',
+      description: '15+ years in fintech backend solutions. Former senior architect at major trading platforms. Expert in MT4/MT5 integrations and risk management systems.',
+      expertise: 'Risk Management, Platform Architecture'
     },
     {
-      name: 'Marcus Rodriguez',
-      role: theme === 'owl' ? 'Head of Strategy' : 'Head of Engineering',
-      image: '👨‍💻',
-      description: theme === 'owl'
-        ? 'Expert in traditional banking and modern digital transformation'
-        : 'Built scalable systems handling millions of transactions'
+      name: 'Sarah Mitchell',
+      role: 'Head of Risk Solutions',
+      image: '👩‍💻',
+      description: '12+ years specializing in broker risk management. Certified financial risk manager with deep expertise in order flow optimization and regulatory compliance.',
+      expertise: 'Risk Analytics, Compliance'
     },
     {
-      name: 'Dr. Elena Volkov',
-      role: theme === 'owl' ? 'Director of Research' : 'Head of Data Science',
-      image: '👩‍🔬',
-      description: theme === 'owl'
-        ? 'PhD in Economics with focus on market behavior patterns'
-        : 'AI/ML expert specializing in real-time financial analytics'
+      name: 'David Chen',
+      role: 'Lead Platform Engineer',
+      image: '👨‍🔧',
+      description: '10+ years in trading platform development. Expert in MetaTrader platforms, DX Trade integrations, and high-frequency trading systems.',
+      expertise: 'MT4/MT5, DX Trade, HFT'
+    },
+    {
+      name: 'Elena Rodriguez',
+      role: 'Head of Client Success',
+      image: '👩‍🤝‍👩',
+      description: '8+ years in fintech client relations. Specializes in onboarding brokers and trading platforms, ensuring smooth implementation of backend solutions.',
+      expertise: 'Client Onboarding, Support'
     }
+  ];
+
+  const achievements = [
+    { number: '1,200+', label: 'Brokers Served' },
+    { number: '99.97%', label: 'Service Uptime' },
+    { number: '24/7', label: 'Support Coverage' },
+    { number: '12ms', label: 'Avg Response Time' }
   ];
 
   return (
     <section
       ref={sectionRef}
       id="about"
-      className={`py-20 ${
-        theme === 'owl' ? 'bg-owl-primary' : 'bg-falcon-dark'
-      }`}
+      className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 py-20"
     >
-      <div className="container mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          className="animate-on-scroll text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2
-            className="text-4xl md:text-6xl font-bold mb-6"
-            style={{
-              fontFamily: currentTheme.fonts.heading,
-              color: currentTheme.colors.text,
-            }}
-          >
-            {theme === 'owl' ? 'About Our Wisdom' : 'About Our Speed'}
-          </h2>
-          <p
-            className="text-xl max-w-3xl mx-auto"
-            style={{ color: currentTheme.colors.muted }}
-          >
-            {theme === 'owl'
-              ? 'We believe in the power of thoughtful innovation. Our approach combines decades of financial expertise with cutting-edge technology to create solutions that are both powerful and sustainable.'
-              : 'We believe in the power of speed and precision. Our platform is built for the future, delivering lightning-fast financial solutions that keep you ahead of the competition.'}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Hero Section */}
+        <div className="text-center mb-20">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6">
+            Why Choose <span className="text-teal-400">FINFX</span>?
+          </h1>
+          <p className="text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto mb-8">
+            We're the trusted backend solutions provider that keeps fintech businesses running smoothly, 
+            helping brokers and trading platforms scale with confidence.
           </p>
-        </motion.div>
+          <div className="flex flex-wrap justify-center gap-4 text-lg text-gray-400">
+            <span className="bg-slate-800/50 px-4 py-2 rounded-full">✓ 99.97% Uptime</span>
+            <span className="bg-slate-800/50 px-4 py-2 rounded-full">✓ 24/7 Support</span>
+            <span className="bg-slate-800/50 px-4 py-2 rounded-full">✓ 1,200+ Clients</span>
+            <span className="bg-slate-800/50 px-4 py-2 rounded-full">✓ 12ms Response</span>
+          </div>
+        </div>
 
         {/* Mission Statement */}
-        <motion.div
-          className="animate-on-scroll mb-20"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <div className={`rounded-2xl p-12 text-center ${
-            theme === 'owl'
-              ? 'bg-owl-secondary/50 backdrop-blur-sm'
-              : 'bg-gray-900/50 backdrop-blur-sm'
-          }`}>
-            <h3
-              className="text-3xl md:text-4xl font-bold mb-6"
-              style={{
-                fontFamily: currentTheme.fonts.heading,
-                color: currentTheme.colors.accent,
-              }}
-            >
-              {theme === 'owl' ? 'Our Mission' : 'Our Vision'}
-            </h3>
-            <p
-              className="text-lg leading-relaxed max-w-4xl mx-auto"
-              style={{ color: currentTheme.colors.text }}
-            >
-              {theme === 'owl'
-                ? 'To bridge the gap between traditional financial wisdom and modern technology, creating solutions that are both innovative and trustworthy. We believe that the best financial technology should feel familiar yet powerful, combining the reliability of established practices with the efficiency of cutting-edge innovation.'
-                : 'To revolutionize the financial industry through lightning-fast, ultra-reliable technology that empowers businesses to operate at the speed of thought. We envision a world where financial transactions are instant, secure, and seamlessly integrated into every aspect of business operations.'}
+        <div className="mb-20">
+          <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-12 text-center border border-slate-600">
+            <h2 className="text-4xl font-bold text-white mb-6">
+              Our Mission
+            </h2>
+            <p className="text-xl text-gray-300 max-w-5xl mx-auto leading-relaxed">
+              To provide <span className="text-teal-400 font-semibold">unprecedented risk management and dealing support</span> 
+              for brokers worldwide. We eliminate the high costs of maintaining in-house expertise teams while delivering 
+              professional-grade backend solutions that help fintech businesses focus on what they do best.
             </p>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Values */}
-        <motion.div
-          className="animate-on-scroll mb-20"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <h3
-            className="text-3xl md:text-4xl font-bold text-center mb-12"
-            style={{
-              fontFamily: currentTheme.fonts.heading,
-              color: currentTheme.colors.text,
-            }}
-          >
-            {theme === 'owl' ? 'Our Values' : 'Our Principles'}
-          </h3>
+        {/* Core Services */}
+        <div className="mb-20">
+          <h2 className="text-4xl font-bold text-center text-white mb-12">
+            Our Core Services
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <motion.div
+            {coreServices.map((service, index) => (
+              <div
                 key={index}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className={`p-6 rounded-xl text-center ${
-                  theme === 'owl'
-                    ? 'bg-owl-secondary/30 hover:bg-owl-accent/20'
-                    : 'bg-gray-800/50 hover:bg-falcon-primary/10'
-                } transition-all duration-300`}
+                className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 text-center border border-slate-600 hover:border-teal-500 transition-all duration-300 hover:transform hover:scale-105"
               >
-                <div className="text-4xl mb-4">{value.icon}</div>
-                <h4
-                  className="text-xl font-semibold mb-3"
-                  style={{ color: currentTheme.colors.accent }}
-                >
-                  {value.title}
-                </h4>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: currentTheme.colors.muted }}
-                >
-                  {value.description}
-                </p>
-              </motion.div>
+                <div className="text-5xl mb-4">{service.icon}</div>
+                <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
+                <p className="text-gray-300 text-sm mb-4 leading-relaxed">{service.description}</p>
+                <div className="text-teal-400 font-bold text-lg">{service.stats}</div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        {/* Team */}
-        <motion.div
-          className="animate-on-scroll"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h3
-            className="text-3xl md:text-4xl font-bold text-center mb-12"
-            style={{
-              fontFamily: currentTheme.fonts.heading,
-              color: currentTheme.colors.text,
-            }}
-          >
-            {theme === 'owl' ? 'Meet Our Sages' : 'Meet Our Team'}
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <motion.div
+        {/* Achievements */}
+        <div className="mb-20">
+          <h2 className="text-4xl font-bold text-center text-white mb-12">
+            Our Track Record
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {achievements.map((achievement, index) => (
+              <div
                 key={index}
-                whileHover={{ y: -5 }}
-                className={`p-6 rounded-xl text-center ${
-                  theme === 'owl'
-                    ? 'bg-owl-secondary/30 hover:bg-owl-accent/20'
-                    : 'bg-gray-800/50 hover:bg-falcon-primary/10'
-                } transition-all duration-300`}
+                className="text-center hover:transform hover:scale-110 transition-transform duration-300"
+              >
+                <div className="text-4xl md:text-5xl font-bold text-teal-400 mb-2">
+                  {achievement.number}
+                </div>
+                <div className="text-gray-300 text-lg">{achievement.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Team Section */}
+        <div className="mb-20">
+          <h2 className="text-4xl font-bold text-center text-white mb-12">
+            Meet Our Expert Team
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {team.map((member, index) => (
+              <div
+                key={index}
+                className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 text-center border border-slate-600 hover:border-teal-500 transition-all duration-300 hover:transform hover:-translate-y-2"
               >
                 <div className="text-6xl mb-4">{member.image}</div>
-                <h4
-                  className="text-xl font-semibold mb-2"
-                  style={{ color: currentTheme.colors.text }}
-                >
-                  {member.name}
-                </h4>
-                <p
-                  className="text-sm font-medium mb-3"
-                  style={{ color: currentTheme.colors.accent }}
-                >
-                  {member.role}
-                </p>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: currentTheme.colors.muted }}
-                >
-                  {member.description}
-                </p>
-              </motion.div>
+                <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
+                <p className="text-teal-400 font-semibold mb-3">{member.role}</p>
+                <p className="text-gray-300 text-sm mb-3 leading-relaxed">{member.description}</p>
+                <div className="text-xs text-gray-400 bg-slate-700/50 px-3 py-1 rounded-full">
+                  {member.expertise}
+                </div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center">
+          <div className="bg-gradient-to-r from-teal-600 to-blue-600 rounded-2xl p-12">
+            <h2 className="text-4xl font-bold text-white mb-6">
+              Ready to Scale Your Fintech Business?
+            </h2>
+            <p className="text-xl text-gray-100 mb-8 max-w-3xl mx-auto">
+              Join hundreds of brokers and trading platforms who trust FINFX for their backend solutions. 
+              Let us handle the heavy lifting while you focus on growing your business.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button 
+                onClick={() => window.location.href = '#contact'}
+                className="bg-white text-teal-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-xl transition-colors duration-300 shadow-lg hover:shadow-xl"
+              >
+                Get Custom Quote
+              </button>
+              <button 
+                onClick={() => window.location.href = '#contact'}
+                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-teal-600 font-bold py-4 px-8 rounded-xl transition-all duration-300"
+              >
+                Schedule Demo
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
