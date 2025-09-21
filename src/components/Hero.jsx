@@ -164,7 +164,7 @@ const Hero = () => {
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
               Trusted backend solutions that keep fintech businesses running smoothly. From risk management to platform support.
             </p>
-          </div>
+      </div>
           <div className="flex items-center justify-center">
             <img
               src={frameSvg}
@@ -244,7 +244,7 @@ const Hero = () => {
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Transparent, stable, and dynamic risk management that works around the clock
             </p>
-          </div>
+            </div>
           <div className="flex items-center justify-center">
             <img
               src={flashbackSvg}
