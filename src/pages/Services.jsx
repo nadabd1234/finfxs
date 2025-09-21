@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTheme } from "../context/ThemeContext";
+import { useNavigate } from "react-router-dom";
 import frame8Svg from "../assets/svg/Frame 8.svg";
 
 if (typeof window !== "undefined") {
@@ -12,6 +13,7 @@ if (typeof window !== "undefined") {
 const Service = () => {
   const { theme, currentTheme } = useTheme();
   const sectionRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const elements = sectionRef.current?.querySelectorAll(".animate-on-scroll");
@@ -46,6 +48,7 @@ const Service = () => {
         "Compliance reporting",
         "Portfolio analysis",
       ],
+      route: "/services/risk-management",
     },
     {
       title: "Dealing Support",
@@ -57,6 +60,7 @@ const Service = () => {
         "Client management",
         "Trade execution",
       ],
+      route: "/services/dealing-support",
     },
     {
       title: "Platform Support",
@@ -68,6 +72,7 @@ const Service = () => {
         "System monitoring",
         "Uptime guarantee",
       ],
+      route: "/services/platform-support",
     },
     {
       title: "CRM Support",
@@ -79,6 +84,7 @@ const Service = () => {
         "Communication tools",
         "Analytics dashboard",
       ],
+      route: "/services/crm-support",
     },
     {
       title: "Custom Development",
@@ -90,6 +96,7 @@ const Service = () => {
         "Scalable architecture",
         "Ongoing maintenance",
       ],
+      route: "/services/custom-development",
     },
   ];
 
@@ -97,34 +104,40 @@ const Service = () => {
     <section
       ref={sectionRef}
       id="services"
-      className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 py-20"
+      className="relative"
     >
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          className="animate-on-scroll text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2
-            className="text-4xl md:text-6xl font-bold mb-6"
-            style={{
-              fontFamily: currentTheme.fonts.heading,
-              color: currentTheme.colors.text,
-            }}
+      {/* Grey Header Section */}
+      <div className="bg-gray-600 py-20 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-600 to-gray-700"></div>
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="animate-on-scroll text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            Our Services
-          </h2>
-          <p
-            className="text-xl max-w-3xl mx-auto"
-            style={{ color: currentTheme.colors.muted }}
-          >
-            Comprehensive backend solutions designed to power your fintech
-            business with enterprise-grade reliability and performance.
-          </p>
-        </motion.div>
+            <h1
+              className="text-5xl md:text-7xl font-extrabold text-white mb-6"
+              style={{
+                fontFamily: currentTheme.fonts.heading,
+              }}
+            >
+              Our Services
+            </h1>
+            <p
+              className="text-xl text-gray-200 max-w-3xl mx-auto"
+            >
+              Comprehensive backend solutions designed to power your fintech
+              business with enterprise-grade reliability and performance.
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Main Content Section */}
+      <div className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 py-20">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Service Capabilities Visual */}
         <motion.div
@@ -138,7 +151,7 @@ const Service = () => {
             <img
               src={frame8Svg}
               alt="Service Portfolio showing Risk Management, Dealing Support, Platform Setup, CRM Support, and Custom Development"
-              className="w-full max-w-6xl h-auto object-contain"
+              className="w-full max-w-6xl h-auto object-contain filter grayscale"
               loading="lazy"
               decoding="async"
             />
@@ -158,11 +171,7 @@ const Service = () => {
               <motion.div
                 key={index}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className={`p-8 rounded-2xl transition-all duration-300 ${
-                  theme === "owl"
-                    ? "bg-owl-secondary/20 hover:bg-owl-accent/10"
-                    : "bg-gray-800/30 hover:bg-falcon-primary/5"
-                }`}
+                className="p-8 rounded-2xl transition-all duration-300 bg-slate-800/50 hover:bg-slate-800/60 border border-slate-600/60 backdrop-blur-sm"
               >
                 <h3
                   className="text-2xl font-bold mb-4"
@@ -197,6 +206,7 @@ const Service = () => {
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => navigate(service.route)}
                   className={`mt-6 px-6 py-2 rounded-lg font-semibold text-sm transition-all duration-300 ${
                     theme === "owl"
                       ? "bg-owl-accent text-owl-primary hover:bg-owl-light"
@@ -209,6 +219,7 @@ const Service = () => {
             ))}
           </div>
         </motion.div>
+        </div>
       </div>
     </section>
   );

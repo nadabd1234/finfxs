@@ -31,7 +31,7 @@ export const ThemeProvider = ({ children }) => {
         background: 'linear-gradient(135deg, #0B0B12 0%, #13131D 100%)',
       },
       fonts: {
-        heading: 'Georgia, Times New Roman, serif',
+        heading: 'Archivo Black, system-ui, sans-serif',
         body: 'Inter, system-ui, sans-serif',
       },
       characteristics: ['Wisdom', 'Depth', 'Structure', 'Thoughtful'],

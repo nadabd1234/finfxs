@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Building2, Shield, LineChart, CreditCard, Cpu, BarChart3, ShieldCheck, Activity, Database, User } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -42,7 +43,7 @@ const Showcase = () => {
       description: theme === 'owl'
         ? 'A comprehensive banking platform serving 50+ countries with robust compliance and risk management features.'
         : 'Ultra-low latency trading engine processing millions of transactions per second with microsecond precision.',
-      image: theme === 'owl' ? '🏦' : '⚡',
+      Icon: theme === 'owl' ? Building2 : Activity,
       technologies: theme === 'owl'
         ? ['React', 'Node.js', 'PostgreSQL', 'Docker', 'Kubernetes']
         : ['C++', 'Rust', 'WebAssembly', 'Redis', 'Kafka'],
@@ -58,7 +59,7 @@ const Showcase = () => {
       description: theme === 'owl'
         ? 'Advanced portfolio management and investment analytics with AI-powered insights and recommendations.'
         : 'Real-time risk assessment and monitoring system with instant alerts and automated responses.',
-      image: theme === 'owl' ? '📈' : '🛡️',
+      Icon: theme === 'owl' ? LineChart : Shield,
       technologies: theme === 'owl'
         ? ['Python', 'TensorFlow', 'D3.js', 'MongoDB', 'AWS']
         : ['Go', 'Apache Flink', 'ClickHouse', 'Prometheus', 'Grafana'],
@@ -74,7 +75,7 @@ const Showcase = () => {
       description: theme === 'owl'
         ? 'Comprehensive compliance management system ensuring adherence to global financial regulations.'
         : 'Global payment processing network with instant settlement and multi-currency support.',
-      image: theme === 'owl' ? '📋' : '💳',
+      Icon: theme === 'owl' ? ShieldCheck : CreditCard,
       technologies: theme === 'owl'
         ? ['Java', 'Spring Boot', 'Oracle', 'Apache Kafka', 'Elasticsearch']
         : ['Node.js', 'TypeScript', 'PostgreSQL', 'Redis', 'Docker'],
@@ -93,7 +94,7 @@ const Showcase = () => {
       quote: theme === 'owl'
         ? 'FINFX has transformed our risk management approach. Their thoughtful design and comprehensive features give us confidence in every decision.'
         : 'The speed and reliability of FINFX is unmatched. We can process transactions faster than ever before.',
-      avatar: '👩‍💼'
+      Icon: User
     },
     {
       name: 'David Kim',
@@ -102,7 +103,7 @@ const Showcase = () => {
       quote: theme === 'owl'
         ? 'The depth of analysis and insights provided by FINFX has revolutionized our financial planning and strategy development.'
         : 'FINFX\'s real-time capabilities have given us a competitive edge in the market.',
-      avatar: '👨‍💻'
+      Icon: User
     },
     {
       name: 'Maria Santos',
@@ -111,7 +112,7 @@ const Showcase = () => {
       quote: theme === 'owl'
         ? 'FINFX makes regulatory compliance effortless. Their platform ensures we stay ahead of changing requirements.'
         : 'The performance and reliability of FINFX has exceeded all our expectations.',
-      avatar: '👩‍🔬'
+      Icon: User
     }
   ];
 
@@ -162,18 +163,12 @@ const Showcase = () => {
               <motion.div
                 key={project.id}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className={`p-8 rounded-2xl cursor-pointer ${
-                  selectedProject === index
-                    ? theme === 'owl'
-                      ? 'bg-owl-accent/20 border-2 border-owl-accent'
-                      : 'bg-falcon-primary/20 border-2 border-falcon-primary'
-                    : theme === 'owl'
-                    ? 'bg-owl-secondary/20 hover:bg-owl-accent/10'
-                    : 'bg-gray-800/30 hover:bg-falcon-primary/5'
-                } transition-all duration-300`}
+                className={`p-8 rounded-2xl cursor-pointer transition-all duration-300 bg-slate-800/50 hover:bg-slate-800/60 border ${selectedProject === index ? 'border-teal-400/60' : 'border-slate-600/60'} backdrop-blur-sm`}
                 onClick={() => setSelectedProject(index)}
               >
-                <div className="text-6xl mb-6">{project.image}</div>
+                <div className="mb-6 text-white">
+                  <project.Icon className="w-10 h-10" />
+                </div>
                 <div
                   className="text-sm font-semibold mb-2"
                   style={{ color: project.color }}
@@ -265,13 +260,11 @@ const Showcase = () => {
               <motion.div
                 key={index}
                 whileHover={{ y: -5 }}
-                className={`p-6 rounded-xl ${
-                  theme === 'owl'
-                    ? 'bg-owl-secondary/20'
-                    : 'bg-gray-800/30'
-                }`}
+                className="p-6 rounded-xl bg-slate-800/50 border border-slate-600/60 backdrop-blur-sm"
               >
-                <div className="text-4xl mb-4">{testimonial.avatar}</div>
+                <div className="mb-4 text-white">
+                  <testimonial.Icon className="w-8 h-8" />
+                </div>
                 <p
                   className="text-lg mb-6 italic leading-relaxed"
                   style={{ color: currentTheme.colors.muted }}

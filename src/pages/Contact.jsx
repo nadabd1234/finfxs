@@ -121,10 +121,14 @@ const Contact = () => {
               className="text-4xl md:text-6xl font-bold mb-6"
               style={{
                 fontFamily: currentTheme.fonts.heading,
-                color: currentTheme.colors.text,
+                color: 'transparent',
+                WebkitTextStroke: '2px #ffffff',
+                textStroke: '2px #ffffff',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
               }}
             >
-              {theme === 'owl' ? 'Contact Us' : 'Contact Us'}
+              CONTACT US
             </h2>
             <p
               className="text-xl max-w-3xl lg:max-w-xl mx-auto lg:mx-0"
@@ -164,7 +168,7 @@ const Contact = () => {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, idx) => (
-              <div key={idx} className="p-6 rounded-xl border border-slate-600/50 bg-slate-800/40">
+              <div key={idx} className="p-6 rounded-xl border border-slate-600/60 bg-slate-800/50 backdrop-blur-sm">
                 <div className="w-10 h-10 rounded-full bg-slate-700/60 border border-slate-600/60 flex items-center justify-center mb-3 text-white">
                   <info.Icon className="w-5 h-5" />
                 </div>
@@ -351,7 +355,7 @@ const Contact = () => {
             >
               {theme === 'owl' ? 'Our Location' : 'Our Location'}
             </h3>
-            <div className="rounded-2xl overflow-hidden border border-slate-600/60 shadow-lg mb-6 bg-slate-800/40">
+            <div className="rounded-2xl overflow-hidden border border-slate-600/60 shadow-lg mb-6 bg-slate-800/50 backdrop-blur-sm">
               <iframe
                 title="FINFX Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9942.214!2d-0.1195!3d51.5033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sen!2suk!4v1610000000000"

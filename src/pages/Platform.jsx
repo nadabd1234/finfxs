@@ -1,19 +1,53 @@
 import Button from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Download, ArrowRight } from "lucide-react";
+import ficon from "../assets/svg/Ficon.png";
 
 const Platforms = () => {
   return (
     <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 py-20">
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          <span className="text-foreground">Platforms & </span>
-          <span className="bg-gradient-primary bg-clip-text text-transparent">Integrations</span>
+      {/* Hero split: left Ficon image, right heading */}
+      <div className="mb-16 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+        {/* Left: Ficon image with 3D effect */}
+        <div className="lg:col-span-1 flex items-center justify-center">
+          <div 
+            className="w-full max-w-md h-auto perspective-1000"
+            style={{
+              perspective: '1000px',
+              transformStyle: 'preserve-3d'
+            }}
+          >
+            <img
+              src={ficon}
+              alt="FINFX Logo"
+              className="w-full h-auto object-contain"
+              style={{
+                transformStyle: 'preserve-3d',
+                filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3))',
+                transition: 'transform 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = 'rotateY(15deg) rotateX(10deg) scale(1.1)';
+                e.target.style.filter = 'drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4))';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
+                e.target.style.filter = 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3))';
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Right: heading block aligned right */}
+        <div className="lg:col-span-2 text-right">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-tight mb-6 text-white">
+            Platforms & <span className="text-teal-400">Integrations</span>
         </h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          We provide seamless integration with industry-leading trading platforms.
+          <p className="text-2xl md:text-3xl text-gray-300 max-w-none">
+            We provide seamless integrations with industry‑leading trading platforms and vendor bridges.
         </p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
@@ -85,7 +119,7 @@ const Platforms = () => {
           Download Integration Spec
         </Button>
       </div>
-      </div>
+    </div>
     </section>
   );
 };

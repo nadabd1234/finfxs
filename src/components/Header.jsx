@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import ficon from '../assets/svg/Ficon.png';
 
 const Header = () => {
   const { theme, isTransitioning } = useTheme();
@@ -18,10 +19,10 @@ const Header = () => {
   const navigate = useNavigate();
   const navItems = [
     { name: 'Home', to: '/' },
-    { name: 'About', to: '/about' },
     { name: 'Platform', to: '/platform' },
     { name: 'Services', to: '/services' },
     { name: 'Demo', to: '/demo' },
+    { name: 'AboutUs', to: '/about' },
     { name: 'Contact', to: '/contact' },
   ];
 
@@ -41,14 +42,12 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2 hover:transform hover:scale-105 transition-transform duration-200">
             <Link to="/" className="flex items-center space-x-2">
-              <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg ${
-                  theme === 'owl'
-                    ? 'bg-owl-accent text-white'
-                    : 'bg-falcon-primary text-falcon-dark'
-                }`}
-              >
-                {theme === 'owl' ? 'F' : '⚡'}
+              <div className="w-12 h-12  flex items-center justify-center overflow-hidden">
+                <img
+                  src={ficon}
+                  alt="FINFX Logo"
+                  className="w-8 h-8 object-contain"
+                />
               </div>
               <span
                 className={`font-bold text-xl ${
