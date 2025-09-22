@@ -82,7 +82,7 @@ const Footer = () => {
               >
                 {theme === 'owl' ? 'F' : '⚡'}
               </div>
-              <span className="font-bold text-xl">Finfxs</span>
+              <span className="font-bold text-xl">FINFXS</span>
             </div>
             <p className="text-sm opacity-80 mb-6 max-w-xs">
               Trusted backend solutions that keep fintech businesses running smoothly. Scale with confidence using our enterprise-grade infrastructure.
@@ -154,7 +154,7 @@ const Footer = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm opacity-60">
-              © 2024 FINFX. All rights reserved.
+              © 2025 FINFXS. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm">
               <a

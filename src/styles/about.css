@@ -1,0 +1,56 @@
+.mask-clip-path {
+    position: absolute;
+    width: 40vw;
+    height: 40vh;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1000px;
+    overflow: hidden;
+}
+
+.about-image {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.about-subtext {
+    max-width: 37.5rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-subtext p:first-child {
+    margin-bottom: 0.75rem;
+    color: #fff;
+}
+
+.animated-title {
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    line-height: 1.2;
+    font-weight: 700;
+    text-align: center;
+}
+
+.animated-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translate3d(0, 100%, 0) rotateX(-80deg);
+    transform-origin: top;
+}
+
+.animated-word b {
+    color: #38bdf8;
+    font-weight: inherit;
+}
+
+
+/* Ensure proper spacing between lines in the title */
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.25em 0;
+}

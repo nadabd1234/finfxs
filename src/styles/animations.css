@@ -1,0 +1,90 @@
+/* Split Text Animations */
+
+.split-text {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.split-text .char,
+.split-text .word,
+.split-text .line {
+    display: inline-block;
+    will-change: transform;
+}
+
+.split-text .char {
+    transform-origin: 50% 100%;
+}
+
+.split-text .word {
+    margin-right: 0.25em;
+    white-space: nowrap;
+}
+
+.split-text .line {
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Animation Classes */
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.fade-in {
+    opacity: 0;
+}
+
+.slide-in {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.scale {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+
+/* Animation Utilities */
+
+.animate-on-scroll {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: none;
+}
+
+
+/* Stagger Delay Utilities */
+
+.stagger-delay>* {
+    opacity: 0;
+}
+
+.stagger-delay>*:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.stagger-delay>*:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.stagger-delay>*:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.stagger-delay>*:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.stagger-delay>*:nth-child(5) {
+    transition-delay: 0.5s;
+}

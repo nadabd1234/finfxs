@@ -1,14 +1,14 @@
 import React from 'react';
 import { ThemeProvider } from './context/ThemeContext';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import Features from './pages/Services';
-import Showcase from './pages/Showcase';
-import Contact from './pages/Contact';
-import Platforms from './pages/Platform';
+import Home from './pages/Home/Home';
+import About from './pages/About/AboutNew';
+import Features from './pages/services/Services';
+import Showcase from './pages/Showcase/Showcase';
+import Contact from './pages/Contact/Contact';
+import Platforms from './pages/Platform/Platform';
 import RiskManagement from './pages/services/RiskManagement';
 import DealingSupport from './pages/services/DealingSupport';
 import PlatformSupport from './pages/services/PlatformSupport';
@@ -16,10 +16,11 @@ import CRMSupport from './pages/services/CRMSupport';
 import CustomDevelopment from './pages/services/CustomDevelopment';
 
 function App() {
+  const location = useLocation();
 
   return (
     <ThemeProvider>
-      <div className="App">
+      <div className="App" key={location.pathname}>
         <Header />
         <main>
           <Routes>

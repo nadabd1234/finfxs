@@ -135,3 +135,52 @@ body {
 .preserve-3d {
     transform-style: preserve-3d;
 }
+
+
+/* Typewriter Effect Styles */
+
+.typewriter-cursor {
+    animation: blink 1s infinite;
+    font-weight: bold;
+    color: #14b8a6;
+    /* teal-500 */
+}
+
+@keyframes blink {
+    0%,
+    50% {
+        opacity: 1;
+    }
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.typewriter-text {
+    border-right: 2px solid #14b8a6;
+    animation: typewriter-border 1s infinite;
+}
+
+@keyframes typewriter-border {
+    0%,
+    50% {
+        border-color: #14b8a6;
+    }
+    51%,
+    100% {
+        border-color: transparent;
+    }
+}
+
+
+/* Enhanced typewriter effect with glow */
+
+.typewriter-glow {
+    text-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
+    transition: text-shadow 0.3s ease;
+}
+
+.typewriter-glow:hover {
+    text-shadow: 0 0 20px rgba(20, 184, 166, 0.8);
+}
