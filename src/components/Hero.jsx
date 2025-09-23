@@ -111,8 +111,8 @@ const Hero = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              Unlock the Advantages: <br />
-              Explore the Key Benefits of Choosing FINFX
+              Our Core Services <br />
+              Comprehensive fintech solutions designed to power your business with enterprise-grade reliability and cutting-edge technology.
             </motion.p>
 
             <div className="mt-16 flex flex-col items-center space-y-8 w-full max-w-5xl">
@@ -322,10 +322,10 @@ const Hero = () => {
         {/* Section Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
-            Our <span className="bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent">Core Services</span>
+            Mission-Critical <span className="bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent">Backend Services</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Comprehensive fintech solutions designed to power your business with enterprise-grade reliability and cutting-edge technology.
+            Engineered for brokers and trading platforms that demand sub-millisecond speed, iron-clad security, and&nbsp;99.97<span className="align-super text-xs">%</span>&nbsp;uptime.
           </p>
         </div>
         
@@ -342,10 +342,10 @@ const Hero = () => {
               />
             </div>
             <div className="relative z-10 p-6 h-80 flex flex-col justify-center items-center text-center">
-              <h3 className="text-xl font-bold text-white mb-3">Risk Management</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Liquidity & Risk Hub</h3>
               <p className="text-gray-300 leading-relaxed text-sm">
-                Advanced risk assessment and monitoring solutions to protect your financial operations.
-          </p>
+                Real-time exposure netting, smart hedging, and deep multi-asset liquidity—controlled from a single console.
+              </p>
         </div>
       </div>
 
@@ -361,10 +361,10 @@ const Hero = () => {
               />
             </div>
             <div className="relative z-10 p-6 h-80 flex flex-col justify-center items-center text-center">
-              <h3 className="text-xl font-bold text-white mb-3">Platform Support</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Trading Platform Engineering</h3>
               <p className="text-gray-300 leading-relaxed text-sm">
-                Comprehensive platform integration and technical support for seamless operations.
-          </p>
+                Zero-downtime deployment, custom plugins, and latency-optimised bridges for MT4, MT5 & DXtrade.
+              </p>
         </div>
           </div>
 
@@ -380,9 +380,9 @@ const Hero = () => {
               />
             </div>
             <div className="relative z-10 p-6 h-80 flex flex-col justify-center items-center text-center">
-              <h3 className="text-xl font-bold text-white mb-3">Custom Solutions</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Bespoke Integrations</h3>
               <p className="text-gray-300 leading-relaxed text-sm">
-                Tailored fintech solutions designed specifically for your business requirements.
+                Connect your CRM, payment rails, and data lakes with tailored APIs built to scale as fast as you do.
               </p>
             </div>
           </div>
@@ -399,9 +399,9 @@ const Hero = () => {
               />
             </div>
             <div className="relative z-10 p-6 h-80 flex flex-col justify-center items-center text-center">
-              <h3 className="text-xl font-bold text-white mb-3">Dealing Support</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Dealing Desk 24/7</h3>
               <p className="text-gray-300 leading-relaxed text-sm">
-                24/7 expert dealing desk support to manage your trading operations and client relationships effectively.
+                Veteran dealers monitoring flow around the clock to maximise P&amp;L and safeguard client experience.
               </p>
             </div>
           </div>
@@ -418,9 +418,9 @@ const Hero = () => {
               />
             </div>
             <div className="relative z-10 p-6 h-80 flex flex-col justify-center items-center text-center">
-              <h3 className="text-xl font-bold text-white mb-3">CRM Support</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Client Lifecycle CRM</h3>
               <p className="text-gray-300 leading-relaxed text-sm">
-                Complete customer relationship management solutions tailored for fintech and trading businesses.
+                KYC automation, lead scoring, and omnichannel comms that turn prospects into loyal traders.
               </p>
             </div>
           </div>

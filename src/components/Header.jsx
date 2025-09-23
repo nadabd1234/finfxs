@@ -21,7 +21,6 @@ const Header = () => {
     { name: 'Home', to: '/' },
     { name: 'Platform', to: '/platform' },
     { name: 'Services', to: '/services' },
-    { name: 'Demo', to: '/demo' },
     { name: 'AboutUs', to: '/about' },
     { name: 'Contact', to: '/contact' },
   ];

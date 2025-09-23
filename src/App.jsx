@@ -32,7 +32,6 @@ function App() {
             <Route path="/services/platform-support" element={<PlatformSupport />} />
             <Route path="/services/crm-support" element={<CRMSupport />} />
             <Route path="/services/custom-development" element={<CustomDevelopment />} />
-            <Route path="/demo" element={<Showcase />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/platform" element={<Platforms />} />
           </Routes>

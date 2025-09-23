@@ -532,6 +532,49 @@ const About = () => {
             </div>
           </div>
 
+      {/* Client Testimonials */}
+      <div className="py-20 animate-section">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold text-white mb-6">Client Testimonials</h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">Hear from those who trust FINFX for their backend solutions</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              name: 'Jennifer Walsh',
+              role: 'Chief Risk Officer',
+              company: 'Global Finance Corp',
+              quote: 'FINFX has transformed our risk management approach. Their thoughtful design and comprehensive features give us confidence in every decision.'
+            },
+            {
+              name: 'David Kim',
+              role: 'Head of Operations',
+              company: 'TechStart Inc',
+              quote: 'The depth of analysis and insights provided by FINFX has revolutionized our financial planning and strategy development.'
+            },
+            {
+              name: 'Maria Santos',
+              role: 'Compliance Director',
+              company: 'International Bank',
+              quote: 'FINFX makes regulatory compliance effortless. Their platform ensures we stay ahead of changing requirements.'
+            }
+          ].map((t, idx) => (
+            <div key={idx} className="animate-card p-8 rounded-2xl bg-slate-800/50 border border-slate-600/60 backdrop-blur-xl hover:-translate-y-2 transition-all duration-300">
+              <div className="mb-4 text-teal-400 flex justify-center">
+                <User className="w-10 h-10" />
+              </div>
+              <p className="text-lg mb-6 italic leading-relaxed text-gray-300">"{t.quote}"</p>
+              <div className="text-center">
+                <div className="font-semibold text-white mb-1">{t.name}</div>
+                <div className="text-sm text-teal-400 mb-1">{t.role}</div>
+                <div className="text-sm text-gray-400">{t.company}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Contact */}
       <div className="py-20 animate-section" id="contact">
         
