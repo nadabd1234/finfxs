@@ -1,5 +1,5 @@
 import Button from "../../components/ui/Button.jsx";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card.jsx";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/Card.jsx";
 import { Download, ArrowRight, ExternalLink, X, CheckCircle, Zap, Shield, TrendingUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
