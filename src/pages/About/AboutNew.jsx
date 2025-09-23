@@ -32,7 +32,7 @@ import {
   Zap
 } from 'lucide-react';
 
-import AnimatedTitle from "../../components/ui/animated/AnimatedTitle";
+import AnimatedTitle from "../../components/ui/animated/AnimatedTitle.jsx";
 import "../../styles/about.css";
 
 gsap.registerPlugin(ScrollTrigger);

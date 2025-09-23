@@ -5,9 +5,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTheme } from "../../context/ThemeContext";
 import { useNavigate } from "react-router-dom";
 // ClipPathTitle moved to Hero.jsx with BenefitSection
-import Arrow from "../../components/ui/Arrow";
-import Section from "../../components/ui/Section";
-import Button from "../../components/ui/Button";
+import Arrow from "../../components/ui/Arrow.jsx";
+import Section from "../../components/ui/Section.jsx";
+import Button from "../../components/ui/Button.jsx";
 import Typewriter from "typewriter-effect";
 
 // Import assets
@@ -15,7 +15,7 @@ import frame8Svg from "../../assets/svg/Frame 8.svg";
 import curve from "../../assets/curve.png";
 import { GradientLight } from "../../components/design/Services";
 import { benefits } from "../../utils/services-constants";
-import ClipPath from "../../components/ui/ClipPath";
+import ClipPath from "../../components/ui/ClipPath.jsx";
 // Adjust path as needed
 
 if (typeof window !== "undefined") {
