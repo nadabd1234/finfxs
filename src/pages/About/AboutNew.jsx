@@ -84,10 +84,9 @@ const About = () => {
       transformOrigin: "50% 50%"
     });
 
-    // Animate to full reveal with rotation for image only
+    // Animate to full reveal for image only
     clipAnimation.to(".mask-clip-path img", {
       clipPath: "circle(150% at 50% 50%)",
-      rotation: 360,
       duration: 1,
       ease: "power2.out"
     });
@@ -379,10 +378,79 @@ const About = () => {
         <div className="relative h-dvh w-screen overflow-hidden" id="clip">
         <div className="mask-clip-path about-image">
           <img
-            src={import.meta.env.BASE_URL + 'about2.webp'}
-            alt="Financial Technology"
-            className="absolute left-0 top-0 h-[100vh] w-[100vw] object-cover"
+            src="/src/assets/svg/rectangle.svg"
+            alt="Background Shape"
+            className="relative w-full h-full object-contain"
+            style={{
+              filter: 'brightness(0) saturate(100%) invert(75%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(95%)',
+              transform: 'scale(1.5)',
+              transformOrigin: 'center center'
+            }}
             loading="eager"
+          />
+          
+          {/* Base blue overlay for general mixing */}
+          <div 
+            className="absolute inset-0 w-full h-full mix-blend-multiply opacity-40"
+            style={{
+              background: 'linear-gradient(45deg, rgba(30, 64, 175, 0.6) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(30, 64, 175, 0.4) 100%)'
+            }}
+          />
+          
+          {/* Targeted mask for thin rope lines - vertical lines */}
+          <div 
+            className="absolute inset-0 w-full h-full mix-blend-overlay opacity-80"
+            style={{
+              background: `
+                repeating-linear-gradient(
+                  90deg,
+                  transparent 0%,
+                  transparent 2%,
+                  rgba(30, 64, 175, 0.9) 2.2%,
+                  rgba(30, 64, 175, 0.9) 2.8%,
+                  transparent 3%,
+                  transparent 8%
+                ),
+                repeating-linear-gradient(
+                  0deg,
+                  transparent 0%,
+                  transparent 3%,
+                  rgba(30, 64, 175, 0.7) 3.2%,
+                  rgba(30, 64, 175, 0.7) 3.8%,
+                  transparent 4%,
+                  transparent 12%
+                )
+              `,
+              maskImage: 'radial-gradient(ellipse 80% 60% at center, black 20%, transparent 70%)'
+            }}
+          />
+          
+          {/* Additional rope line emphasis - curved paths */}
+          <div 
+            className="absolute inset-0 w-full h-full mix-blend-color-burn opacity-50"
+            style={{
+              background: `
+                conic-gradient(
+                  from 45deg at 30% 40%, 
+                  transparent 0deg, 
+                  rgba(30, 64, 175, 0.8) 30deg, 
+                  rgba(255, 255, 255, 0.3) 60deg, 
+                  rgba(30, 64, 175, 0.8) 90deg, 
+                  transparent 120deg, 
+                  transparent 360deg
+                ),
+                conic-gradient(
+                  from 135deg at 70% 60%, 
+                  transparent 0deg, 
+                  rgba(30, 64, 175, 0.6) 45deg, 
+                  rgba(255, 255, 255, 0.4) 90deg, 
+                  rgba(30, 64, 175, 0.6) 135deg, 
+                  transparent 180deg, 
+                  transparent 360deg
+                )
+              `,
+              clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
+            }}
           />
           
           {/* Centered Text Overlay */}
