@@ -168,13 +168,23 @@ const Contact = () => {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, idx) => (
-              <div key={idx} className="p-6 rounded-xl border border-slate-600/60 bg-slate-800/50 backdrop-blur-sm">
-                <div className="w-10 h-10 rounded-full bg-slate-700/60 border border-slate-600/60 flex items-center justify-center mb-3 text-white">
-                  <info.Icon className="w-5 h-5" />
+              <div
+                key={idx}
+                className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-teal-400/40 via-indigo-400/30 to-sky-400/40"
+              >
+                <div
+                  className="relative h-full w-full rounded-2xl border border-slate-700/60 bg-slate-900/60 backdrop-blur-md p-6 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
+                >
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-teal-500/10 via-indigo-500/10 to-sky-500/10" />
+                  <div className="relative z-10">
+                    <div className="w-11 h-11 rounded-xl bg-slate-800/70 border border-slate-600/60 flex items-center justify-center mb-4 text-white shadow-inner shadow-black/30">
+                      <info.Icon className="w-5 h-5" />
+                    </div>
+                    <div className="text-white font-semibold tracking-wide">{info.title}</div>
+                    <div className="text-teal-300 text-sm">{info.value}</div>
+                    <div className="text-gray-400 text-xs mt-1 leading-relaxed">{info.description}</div>
+                  </div>
                 </div>
-                <div className="text-white font-semibold">{info.title}</div>
-                <div className="text-teal-300 text-sm">{info.value}</div>
-                <div className="text-gray-400 text-xs mt-1">{info.description}</div>
               </div>
             ))}
           </div>
@@ -196,12 +206,11 @@ const Contact = () => {
             viewport={{ once: true }}
           >
             {/* Left column: Form card */}
-            <div
-              className="p-6 rounded-2xl border border-slate-600/60 bg-slate-800/50 backdrop-blur-sm shadow-lg"
-              style={{
-                boxShadow: '0 10px 30px rgba(0,0,0,0.25)'
-              }}
-            >
+            <div className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-teal-400/40 via-indigo-400/30 to-sky-400/40">
+              <div
+                className="rounded-2xl border border-slate-700/60 bg-slate-900/60 backdrop-blur-md p-6 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
+              >
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-teal-500/10 via-indigo-500/10 to-sky-500/10" />
               <h3
                 className="text-2xl font-bold mb-6"
                 style={{ color: currentTheme.colors.text, fontFamily: currentTheme.fonts.heading }}
@@ -337,7 +346,8 @@ const Contact = () => {
               >
                 {theme === 'owl' ? 'Send Message' : 'Send Now'}
               </motion.button>
-            </form>
+              </form>
+              </div>
             </div>
           </motion.div>
 
@@ -355,16 +365,19 @@ const Contact = () => {
             >
               {theme === 'owl' ? 'Our Location' : 'Our Location'}
             </h3>
-            <div className="rounded-2xl overflow-hidden border border-slate-600/60 shadow-lg mb-6 bg-slate-800/50 backdrop-blur-sm">
-              <iframe
-                title="FINFX Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9942.214!2d-0.1195!3d51.5033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sen!2suk!4v1610000000000"
-                width="100%"
-                height="360"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+            <div className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-teal-400/40 via-indigo-400/30 to-sky-400/40 mb-6">
+              <div className="rounded-2xl overflow-hidden border border-slate-700/60 bg-slate-900/60 backdrop-blur-md transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_10px_40px_rgba(0,0,0,0.35)]">
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-teal-500/10 via-indigo-500/10 to-sky-500/10" />
+                <iframe
+                  title="FINFX Location"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9942.214!2d-0.1195!3d51.5033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sen!2suk!4v1610000000000"
+                  width="100%"
+                  height="360"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
             </div>
 
             <div>
