@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
@@ -16,6 +17,18 @@ if (typeof window !== "undefined") {
 
 const Hero = () => {
   const { theme } = useTheme();
+  const navigate = useNavigate();
+
+  // Smooth scroll to section
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
 
   // BenefitSection component moved from Services
   const BenefitSection = () => {
@@ -125,54 +138,54 @@ const Hero = () => {
             </motion.p>
 
             <div className="mt-16 flex flex-col items-center space-y-8 w-full max-w-5xl">
-              <div className="general-title w-full max-w-3xl">
+              <div className="general-title w-full max-w-3xl cursor-pointer" onClick={() => navigate('/services/risk-management')}>
                 <ClipPathTitle
                   title="RISK MANAGEMENT"
                   color="#ffffff"
                   bg="#1e40af"
                   borderColor="#1e3a8a"
                   tilt={-2}
-                  className="first-title border-[.5vw] text-nowrap opacity-0"
+                  className="first-title border-[.5vw] text-nowrap opacity-0 hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="general-title w-full max-w-3xl">
+              <div className="general-title w-full max-w-3xl cursor-pointer" onClick={() => navigate('/services/dealing-support')}>
                 <ClipPathTitle
                   title="DEALING SUPPORT"
                   color="#ffffff"
                   bg="#2563eb"
                   borderColor="#1d4ed8"
                   tilt={1.5}
-                  className="second-title border-[.5vw] text-nowrap opacity-0"
+                  className="second-title border-[.5vw] text-nowrap opacity-0 hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="general-title w-full max-w-3xl">
+              <div className="general-title w-full max-w-3xl cursor-pointer" onClick={() => navigate('/services/platform-support')}>
                 <ClipPathTitle
                   title="PLATFORM SUPPORT"
                   color="#ffffff"
                   bg="#3b82f6"
                   borderColor="#2563eb"
                   tilt={-1}
-                  className="third-title border-[.5vw] text-nowrap opacity-0"
+                  className="third-title border-[.5vw] text-nowrap opacity-0 hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="general-title w-full max-w-3xl">
+              <div className="general-title w-full max-w-3xl cursor-pointer" onClick={() => navigate('/services/crm-support')}>
                 <ClipPathTitle
                   title="CRM SUPPORT"
                   color="#ffffff"
                   bg="#1d4ed8"
                   borderColor="#1e3a8a"
                   tilt={2}
-                  className="fourth-title border-[.5vw] text-nowrap opacity-0"
+                  className="fourth-title border-[.5vw] text-nowrap opacity-0 hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="general-title w-full max-w-3xl">
+              <div className="general-title w-full max-w-3xl cursor-pointer" onClick={() => navigate('/services/custom-development')}>
                 <ClipPathTitle
-                  title="CUSTOM SUPPORT"
+                  title="CUSTOM DEVELOPMENT"
                   color="#ffffff"
                   bg="#60a5fa"
                   borderColor="#3b82f6"
                   tilt={-1.5}
-                  className="fifth-title border-[.5vw] text-nowrap opacity-0"
+                  className="fifth-title border-[.5vw] text-nowrap opacity-0 hover:scale-105 transition-transform duration-300"
                 />
               </div>
             </div>
@@ -242,7 +255,10 @@ const Hero = () => {
                       Enterprise-grade. Lightning-fast. Bulletproof secure.
                     </span>
                   </p>
-                  <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105">
+                  <button 
+                    onClick={() => scrollToSection('services-section')}
+                    className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105"
+                  >
                     Explore Services
                   </button>
                 </div>
@@ -339,12 +355,12 @@ const Hero = () => {
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {/* Card 1 - Cyan/Blue */}
-          <div className="relative group">
+          {/* Card 1 - Risk Management */}
+          <div className="relative group cursor-pointer hover:scale-105 transition-transform duration-300" onClick={() => navigate('/services/risk-management')}>
             <div className="absolute inset-0">
               <img
                 src={card1Svg}
-                alt="Card 1"
+                alt="Risk Management"
                 className="w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -358,12 +374,12 @@ const Hero = () => {
         </div>
       </div>
 
-          {/* Card 2 - Orange/Yellow */}
-          <div className="relative group">
+          {/* Card 2 - Platform Support */}
+          <div className="relative group cursor-pointer hover:scale-105 transition-transform duration-300" onClick={() => navigate('/services/platform-support')}>
             <div className="absolute inset-0">
               <img
                 src={card1Svg}
-                alt="Card 1"
+                alt="Platform Support"
                 className="w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -377,12 +393,12 @@ const Hero = () => {
         </div>
           </div>
 
-          {/* Card 3 - Blue */}
-          <div className="relative group">
+          {/* Card 3 - Custom Development */}
+          <div className="relative group cursor-pointer hover:scale-105 transition-transform duration-300" onClick={() => navigate('/services/custom-development')}>
             <div className="absolute inset-0">
               <img
                 src={card1Svg}
-                alt="Card 1"
+                alt="Custom Development"
                 className="w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -397,11 +413,11 @@ const Hero = () => {
           </div>
 
           {/* Card 4 - Dealing Support */}
-          <div className="relative group">
+          <div className="relative group cursor-pointer hover:scale-105 transition-transform duration-300" onClick={() => navigate('/services/dealing-support')}>
             <div className="absolute inset-0">
               <img
                 src={card1Svg}
-                alt="Card 4"
+                alt="Dealing Support"
                 className="w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -416,11 +432,11 @@ const Hero = () => {
           </div>
 
           {/* Card 5 - CRM Support */}
-          <div className="relative group">
+          <div className="relative group cursor-pointer hover:scale-105 transition-transform duration-300" onClick={() => navigate('/services/crm-support')}>
             <div className="absolute inset-0">
               <img
                 src={card1Svg}
-                alt="Card 5"
+                alt="CRM Support"
                 className="w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -487,29 +503,35 @@ const Hero = () => {
                   Built on enterprise-grade infrastructure that powers the world's most demanding financial applications
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                  <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 text-lg">
+                  <button 
+                    onClick={() => navigate('/services')}
+                    className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 text-lg"
+                  >
                     Explore Our Solutions
                   </button>
-                  <button className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold rounded-lg transition-all duration-300 hover:scale-105 text-lg">
-                    View Case Studies
+                  <button 
+                    onClick={() => navigate('/about')}
+                    className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold rounded-lg transition-all duration-300 hover:scale-105 text-lg"
+                  >
+                    Learn About Us
                   </button>
                 </div>
                 
                 {/* Platform Icons */}
                 <div className="mt-16 flex justify-center items-center gap-12">
-                  <div className="text-center">
+                  <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center mb-3 mx-auto">
                       <span className="text-white font-bold text-lg">MT4</span>
                     </div>
                     <p className="text-sm text-gray-400 font-medium">MetaTrader 4</p>
                   </div>
-                  <div className="text-center">
+                  <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
                     <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-700 rounded-xl flex items-center justify-center mb-3 mx-auto">
                       <span className="text-white font-bold text-lg">MT5</span>
                     </div>
                     <p className="text-sm text-gray-400 font-medium">MetaTrader 5</p>
                   </div>
-                  <div className="text-center">
+                  <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
                     <div className="w-20 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center mb-3 mx-auto">
                       <span className="text-white font-bold text-sm">DX</span>
                     </div>
@@ -523,7 +545,9 @@ const Hero = () => {
       </div>
 
       {/* Benefits Section - Moved from Services */}
-      <BenefitSection />
+      <div id="services-section">
+        <BenefitSection />
+      </div>
     </section>
     </>
   );
