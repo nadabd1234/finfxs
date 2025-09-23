@@ -659,16 +659,7 @@ const About = () => {
             visibleSections.has(6) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
           }`}
         >
-          <div className={`text-center mb-16 transition-all duration-1000 delay-200 ${
-            visibleSections.has(6) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-            <h2 className="text-5xl font-bold text-white mb-6">
-              Get In Touch
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Ready to discuss your backend solution needs? Let's start a conversation.
-            </p>
-          </div>
+          
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Contact Form */}
@@ -679,44 +670,10 @@ const About = () => {
                   ✓ Message sent successfully! We'll get back to you within 24 hours.
                 </div>
               )}
-              <form onSubmit={handleFormSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Name *</label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-500 transition-colors"
-                      placeholder="Your full name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Email *</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-500 transition-colors"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Company</label>
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-500 transition-colors"
-                    placeholder="Your company name"
-                  />
-                </div>
+              
+                    
+                 
+               
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">Interest *</label>
                   <select

@@ -66,22 +66,30 @@ const About = () => {
 
   // GSAP Animations
   useGSAP(() => {
-    // Clip path animation
+    // Circular clip path animation
     const clipAnimation = gsap.timeline({
       scrollTrigger: {
         trigger: "#clip",
-        start: "center center",
-        end: "+=800 center",
-        scrub: 0.5,
+        start: "top 80%",
+        end: "+=150 center",
+        scrub: 0.2,
         pin: true,
         pinSpacing: true,
       },
     });
 
-    clipAnimation.to(".mask-clip-path", {
-      width: "100vw",
-      height: "100vh",
-      borderRadius: 0,
+    // Set initial state - small circle in center for image only
+    gsap.set(".mask-clip-path img", {
+      clipPath: "circle(0% at 50% 50%)",
+      transformOrigin: "50% 50%"
+    });
+
+    // Animate to full reveal with rotation for image only
+    clipAnimation.to(".mask-clip-path img", {
+      clipPath: "circle(150% at 50% 50%)",
+      rotation: 360,
+      duration: 1,
+      ease: "power2.out"
     });
 
     // Section animations
@@ -410,13 +418,27 @@ const About = () => {
           
           {/* Centered Text Overlay */}
           <div className="absolute inset-0 flex items-center justify-center z-10">
-            <div className="text-center">
-              <h1 className="text-6xl md:text-8xl font-bold text-white mb-4">
+            <div className="text-center max-w-5xl mx-auto px-8">
+              <h1 className="text-6xl md:text-8xl font-bold text-white mb-6">
                 About Us
               </h1>
-              <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
+              <p className="text-xl md:text-2xl text-gray-300 mb-6 leading-relaxed">
                 Discover our story and mission in transforming financial technology
               </p>
+              <div className="text-lg md:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
+                <p className="mb-4">
+                  <span className="text-teal-400 font-semibold">FINFX</span> isn't just another fintech company—we're the architects of tomorrow's financial infrastructure. 
+                  Born from a vision to democratize access to enterprise-grade backend solutions, we've spent years perfecting the art of seamless financial technology integration.
+                </p>
+                <p className="mb-4">
+                  Our journey began when we recognized that <span className="text-white font-medium">traditional financial systems were holding back innovation</span>. 
+                  Today, we power over <span className="text-teal-400 font-bold">1,200+ brokers and trading platforms</span> worldwide, 
+                  delivering <span className="text-white font-medium">99.97% uptime</span> and <span className="text-white font-medium">12ms response times</span> that set industry standards.
+                </p>
+                <p className="text-teal-300 font-medium">
+                  We don't just build technology—we build the future of finance, one connection at a time.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -512,73 +534,13 @@ const About = () => {
 
       {/* Contact */}
       <div className="py-20 animate-section" id="contact">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-white mb-6">Get In Touch</h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">Ready to discuss your backend solution needs? Let's start a conversation.</p>
-        </div>
+        
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Form */}
-          <div className="bg-gradient-to-br from-slate-800/60 to-slate-700/60 backdrop-blur-xl rounded-2xl p-8 border border-slate-600/50">
-            <h3 className="text-2xl font-bold text-white mb-6">Send us a message</h3>
-            {isFormSubmitted && (
-              <div className="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg text-green-300">
-                ✓ Message sent successfully! We'll get back to you within 24 hours.
-              </div>
-            )}
-            <form onSubmit={handleFormSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Name *</label>
-                  <input type="text" name="name" value={formData.name} onChange={handleInputChange} required className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-500 transition-colors" placeholder="Your full name" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Email *</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-500 transition-colors" placeholder="your@email.com" />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Company</label>
-                <input type="text" name="company" value={formData.company} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-500 transition-colors" placeholder="Your company name" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Interest *</label>
-                <select name="interest" value={formData.interest} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white focus:outline-none focus:border-teal-500 transition-colors">
-                  <option value="general">General Inquiry</option>
-                  <option value="risk-management">Risk Management</option>
-                  <option value="platform-support">Platform Support</option>
-                  <option value="dealing-support">Dealing Support</option>
-                  <option value="custom-development">Custom Development</option>
-                  <option value="partnership">Partnership</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Message *</label>
-                <textarea name="message" value={formData.message} onChange={handleInputChange} required rows={4} className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-500 transition-colors resize-none" placeholder="Tell us about your project and how we can help..." />
-              </div>
-              <button type="submit" className="w-full bg-gradient-to-r from-teal-600 to-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-teal-700 hover:to-blue-700 transition-all duration-300">Send Message</button>
-            </form>
-          </div>
+          
 
           {/* Contact Info */}
-          <div className="space-y-6">
-            <div className="bg-gradient-to-br from-slate-800/60 to-slate-700/60 backdrop-blur-xl rounded-2xl p-8 border border-slate-600/50">
-              <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
-              <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-teal-500/20 rounded-full flex items-center justify-center"><Phone className="w-6 h-6 text-teal-400" /></div>
-                  <div><div className="text-white font-semibold">Phone</div><div className="text-gray-400">+1 (555) 123-4567</div></div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center"><MessageCircle className="w-6 h-6 text-blue-400" /></div>
-                  <div><div className="text-white font-semibold">Email</div><div className="text-gray-400">hello@finfxs.com</div></div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center"><Globe className="w-6 h-6 text-purple-400" /></div>
-                  <div><div className="text-white font-semibold">Website</div><div className="text-gray-400">www.finfxs.com</div></div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
 
