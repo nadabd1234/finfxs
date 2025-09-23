@@ -292,36 +292,6 @@ const About = () => {
     });
   };
 
-  const coreServices = [
-    { 
-      Icon: ShieldIcon, 
-      title: 'Risk Management', 
-      description: '24/7 transparent risk monitoring with dynamic solutions that help brokers tap into the value of their order flow', 
-      stats: '99.97% Uptime',
-      features: ['Real-time Monitoring', 'Automated Alerts', 'Compliance Reporting', 'Portfolio Analysis']
-    },
-    { 
-      Icon: Settings, 
-      title: 'Platform Support', 
-      description: 'Expert setup and maintenance for MT4, MT5, DX Trade with seamless liquidity provider connections', 
-      stats: '47+ Platforms',
-      features: ['MT4/MT5 Setup', 'DX Trade Integration', 'Liquidity Bridges', 'Performance Optimization']
-    },
-    { 
-      Icon: Phone, 
-      title: 'Dealing Support', 
-      description: 'Professional dealing room services with decades of collective industry experience', 
-      stats: '24/7 Support',
-      features: ['Expert Dealers', 'Client Management', 'Trade Execution', 'Market Analysis']
-    },
-    { 
-      Icon: Code, 
-      title: 'Custom Development', 
-      description: 'Tailored backend solutions and integrations designed for your specific business needs', 
-      stats: '100% Custom',
-      features: ['API Development', 'System Integration', 'Scalable Architecture', 'Ongoing Maintenance']
-    }
-  ];
 
   const team = [
     {
@@ -365,29 +335,29 @@ const About = () => {
     {
       title: 'Innovation',
       description: 'We continuously evolve our solutions to meet the changing needs of the fintech industry.',
-      icon: '🚀'
+      Icon: TrendingUp
     },
     {
       title: 'Reliability',
       description: 'Our systems are built for 99.97% uptime, ensuring your business never stops.',
-      icon: '⚡'
+      Icon: Zap
     },
     {
       title: 'Excellence',
       description: 'We deliver professional-grade solutions with meticulous attention to detail.',
-      icon: '🎯'
+      Icon: Target
     },
     {
       title: 'Partnership',
       description: 'We work closely with our clients to understand and solve their unique challenges.',
-      icon: '🤝'
+      Icon: Users
     }
   ];
 
   return (
-    <div id="about" className="min-h-screen w-screen">
-      <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
-        <p className="font-general text-sm uppercase md:text-[10px]">
+    <div id="about" className="min-h-screen w-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
+      <div className="relative mt-36 flex flex-col items-center gap-5 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 py-20">
+        <p className="font-general text-sm uppercase md:text-[10px] text-white">
           Welcome to FINFX
         </p>
 
@@ -397,14 +367,13 @@ const About = () => {
         />
 
         <div className="about-subtext">
-          <p>Your Path to Financial Innovation Begins Here</p>
+          <p className="text-white">Your Path to Financial Innovation Begins Here</p>
           <p className="text-gray-400">
             FINFX unites cutting-edge technology with reliable backend solutions,
             creating a seamless ecosystem for fintech businesses worldwide
           </p>
         </div>
       </div>
-
 
       {/* Image Section */}
         <div className="relative h-dvh w-screen overflow-hidden" id="clip">
@@ -444,36 +413,6 @@ const About = () => {
         </div>
       </div>
 
-      {/* Core Services */}
-      <div 
-        ref={(el) => sectionRefs.current[2] = el}
-        className="py-20 animate-section"
-      >
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-white mb-6">Our Core Services</h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">Comprehensive backend solutions designed to power your fintech business</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {coreServices.map((service, index) => (
-            <div key={index} className="animate-card bg-gradient-to-br from-slate-800/60 to-slate-700/60 backdrop-blur-xl rounded-2xl p-8 border border-slate-600/50 hover:border-teal-500/50 transition-all duration-500 hover:-translate-y-2">
-              <div className="mb-6 text-teal-400 flex justify-center">
-                <service.Icon className="w-12 h-12" />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-              <p className="text-gray-300 text-sm mb-6 leading-relaxed">{service.description}</p>
-              <div className="space-y-2 mb-6">
-                {service.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center text-xs text-gray-400">
-                    <CheckCircle className="w-4 h-4 text-teal-400 mr-2" />
-                    {feature}
-                  </div>
-                ))}
-              </div>
-              <div className="text-teal-400 font-bold text-lg bg-teal-400/10 px-4 py-2 rounded-lg inline-block">{service.stats}</div>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Achievements */}
       <div className="py-20 animate-section">
@@ -483,11 +422,11 @@ const About = () => {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {achievements.map((a, index) => (
-            <div key={index} className="animate-card text-center bg-gradient-to-br from-slate-800/40 to-slate-700/40 backdrop-blur-sm rounded-2xl p-8 border border-slate-600/30">
+            <div key={index} className="animate-card text-center">
               <div className="mb-4 flex justify-center">
-                <a.Icon className={`w-8 h-8 ${a.color}`} />
+                <a.Icon className="w-8 h-8 text-white" />
               </div>
-              <div className={`animate-counter text-4xl md:text-5xl font-bold mb-3 ${a.color}`}>{a.number}</div>
+              <div className="animate-counter text-4xl md:text-5xl font-bold mb-3 text-white">{a.number}</div>
               <div className="text-gray-300 text-lg font-medium">{a.label}</div>
             </div>
           ))}
@@ -502,14 +441,14 @@ const About = () => {
         </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {team.map((member, index) => (
-            <div key={index} className="animate-card bg-gradient-to-br from-slate-800/60 to-slate-700/60 backdrop-blur-xl rounded-2xl p-8 text-center border border-slate-600/50">
+            <div key={index} className="animate-card text-center">
               <div className="mb-6 text-teal-400 flex justify-center">
                 <member.Icon className="w-12 h-12" />
               </div>
               <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
               <p className="text-teal-400 font-semibold mb-4">{member.role}</p>
               <p className="text-gray-300 text-sm mb-4 leading-relaxed">{member.description}</p>
-              <div className="text-xs text-gray-400 bg-slate-700/50 px-4 py-2 rounded-full inline-block">{member.expertise}</div>
+              <div className="text-xs text-gray-400">{member.expertise}</div>
             </div>
           ))}
         </div>
@@ -523,8 +462,10 @@ const About = () => {
             </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {values.map((value, index) => (
-            <div key={index} className="animate-card text-center bg-gradient-to-br from-slate-800/40 to-slate-700/40 backdrop-blur-sm rounded-2xl p-8 border border-slate-600/30">
-              <div className="text-4xl mb-4">{value.icon}</div>
+            <div key={index} className="animate-card text-center">
+              <div className="mb-6 text-teal-400 flex justify-center">
+                <value.Icon className="w-12 h-12" />
+              </div>
               <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
               <p className="text-gray-300 text-sm leading-relaxed">{value.description}</p>
             </div>
@@ -560,7 +501,7 @@ const About = () => {
               quote: 'FINFX makes regulatory compliance effortless. Their platform ensures we stay ahead of changing requirements.'
             }
           ].map((t, idx) => (
-            <div key={idx} className="animate-card p-8 rounded-2xl bg-slate-800/50 border border-slate-600/60 backdrop-blur-xl hover:-translate-y-2 transition-all duration-300">
+            <div key={idx} className="animate-card p-8">
               <div className="mb-4 text-teal-400 flex justify-center">
                 <User className="w-10 h-10" />
               </div>
@@ -575,31 +516,7 @@ const About = () => {
         </div>
       </div>
 
-      {/* Contact */}
-      <div className="py-20 animate-section" id="contact">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Form */}
-          
-
-          {/* Contact Info */}
-          
-        </div>
-      </div>
-
-      {/* CTA */}
-      <div className="py-20 animate-section">
-        <div className="relative">
-          <div className="bg-gradient-to-r from-teal-600 via-blue-600 to-purple-600 rounded-3xl p-16 text-center shadow-2xl border border-teal-500/20">
-            <h2 className="text-5xl font-bold text-white mb-8">Ready to Scale Your Fintech Business?</h2>
-            <p className="text-xl text-gray-100 mb-12 max-w-4xl mx-auto">Join hundreds of brokers and trading platforms who trust FINFX for their backend solutions.</p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button onClick={() => window.location.href = '#contact'} className="group bg-white text-teal-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-xl transition-all duration-300">Get Custom Quote</button>
-              <button onClick={() => window.location.href = '#contact'} className="group bg-transparent border-2 border-white text-white hover:bg-white hover:text-teal-600 font-bold py-4 px-8 rounded-xl transition-all duration-300">Schedule Demo</button>
-            </div>
-        </div>
-      </div>
-      </div>
+      
 
     </div>
   );

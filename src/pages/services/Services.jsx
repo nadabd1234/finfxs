@@ -29,8 +29,8 @@ const CopymAISnippet = () => {
   return (
     <div className="relative max-w-[23rem] mx-auto md:max-w-5xl xl:mb-16">
       <div className="relative z-10 p-0.5 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-500/50 shadow-2xl">
-        <div className="relative bg-slate-900/90 rounded-[1rem] overflow-hidden">
-          <div className="h-[1.25rem] bg-slate-800 rounded-t-[0.9rem]" />
+        <div className="relative bg-gradient-to-br from-slate-900/90 via-blue-900/90 to-slate-800/90 rounded-[1rem] overflow-hidden">
+          <div className="h-[1.25rem] bg-gradient-to-br from-slate-800 to-blue-800 rounded-t-[0.9rem]" />
 
           <div className="aspect-[33/40] rounded-b-[0.9rem] overflow-hidden md:aspect-[688/490] lg:aspect-[1024/490]">
             <img

@@ -207,21 +207,7 @@ const Contact = () => {
                 <div className="text-gray-300 text-sm mb-1">hello@finfx.com</div>
               </div>
 
-              {/* Address Card */}
-              <div className="bg-slate-800/50 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-slate-800/70 transition-all duration-300">
-                <div className="flex items-center mb-4">
-                  <MapPin className="w-6 h-6 text-teal-400 mr-3" />
-                  <span className="text-white font-semibold">MAILING ADDRESS</span>
-                </div>
-                <div className="text-gray-300 text-sm">
-                  Altra Pure, Inc.<br />
-                  1234 Innovation Drive<br />
-                  Suite 200<br />
-                  San Diego, CA 92121<br />
-                  United States
-                </div>
-              </div>
-
+              
               {/* Phone Card */}
               <div className="bg-slate-800/50 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-slate-800/70 transition-all duration-300">
                 <div className="flex items-center mb-4">

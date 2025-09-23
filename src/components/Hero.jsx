@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import frameSvg from "../assets/svg/Frame 10.svg";
 import dropShadowSvg from "../assets/svg/Drop Shadow.svg";
 import card1Svg from "../assets/benefits/card-1.svg";
+import figma3Svg from "../assets/svg/figma3.svg";
 import ClipPathTitle from "./ClipPathTitle";
 
 if (typeof window !== "undefined") {
@@ -101,17 +102,25 @@ const Hero = () => {
     }, []);
 
     return (
-      <div className="benefit-section py-20 bg-gradient-to-br from-slate-800 to-blue-900/50">
+      <div className="benefit-section py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center text-center">
-            <motion.p 
-              className="text-lg md:text-xl font-semibold text-white max-w-3xl mx-auto"
+            <motion.h2
+              className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight text-white"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              Our Core Services <br />
+              Our <span className="bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent">Core Services</span>
+            </motion.h2>
+            <motion.p
+              className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               Comprehensive fintech solutions designed to power your business with enterprise-grade reliability and cutting-edge technology.
             </motion.p>
 
@@ -422,6 +431,92 @@ const Hero = () => {
               <p className="text-gray-300 leading-relaxed text-sm">
                 KYC automation, lead scoring, and omnichannel comms that turn prospects into loyal traders.
               </p>
+            </div>
+          </div>
+        </div>
+        {/* Decorative SVG Banner */}
+        <div className="mt-16 flex justify-center">
+          <div className="relative w-full h-screen">
+            {/* Base SVG */}
+            
+            
+            {/* Base blue overlay for general mixing */}
+            <div 
+              className="absolute inset-0 w-full h-full mix-blend-multiply opacity-40"
+              style={{
+                background: 'linear-gradient(45deg, rgba(30, 64, 175, 0.6) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(30, 64, 175, 0.4) 100%)'
+              }}
+            />
+            
+            
+            
+            {/* Additional accent overlay */}
+            <div 
+              className="absolute inset-0 w-full h-full mix-blend-color-burn opacity-30"
+              style={{
+                background: `
+                  conic-gradient(
+                    from 45deg at 30% 50%, 
+                    transparent 0deg, 
+                    rgba(30, 64, 175, 0.6) 30deg, 
+                    rgba(255, 255, 255, 0.3) 60deg, 
+                    rgba(30, 64, 175, 0.6) 90deg, 
+                    transparent 120deg, 
+                    transparent 360deg
+                  ),
+                  conic-gradient(
+                    from 135deg at 70% 50%, 
+                    transparent 0deg, 
+                    rgba(30, 64, 175, 0.4) 45deg, 
+                    rgba(255, 255, 255, 0.4) 90deg, 
+                    rgba(30, 64, 175, 0.4) 135deg, 
+                    transparent 180deg, 
+                    transparent 360deg
+                  )
+                `
+              }}
+            />
+
+            {/* Content Overlay */}
+            <div className="absolute inset-0 flex items-center justify-center z-20">
+              <div className="text-center max-w-6xl mx-auto px-8">
+                <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
+                  The Future of <span className="bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent">Finance</span>
+                </h2>
+                <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-12 leading-relaxed max-w-4xl mx-auto">
+                  Built on enterprise-grade infrastructure that powers the world's most demanding financial applications
+                </p>
+                <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                  <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 text-lg">
+                    Explore Our Solutions
+                  </button>
+                  <button className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold rounded-lg transition-all duration-300 hover:scale-105 text-lg">
+                    View Case Studies
+                  </button>
+                </div>
+                
+                {/* Platform Icons */}
+                <div className="mt-16 flex justify-center items-center gap-12">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center mb-3 mx-auto">
+                      <span className="text-white font-bold text-lg">MT4</span>
+                    </div>
+                    <p className="text-sm text-gray-400 font-medium">MetaTrader 4</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-700 rounded-xl flex items-center justify-center mb-3 mx-auto">
+                      <span className="text-white font-bold text-lg">MT5</span>
+                    </div>
+                    <p className="text-sm text-gray-400 font-medium">MetaTrader 5</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-20 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center mb-3 mx-auto">
+                      <span className="text-white font-bold text-sm">DX</span>
+                    </div>
+                    <p className="text-sm text-gray-400 font-medium">DXtrade</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

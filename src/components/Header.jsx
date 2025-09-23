@@ -33,7 +33,7 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-owl-light/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        isScrolled ? 'bg-gradient-to-br from-slate-900/95 via-blue-900/95 to-slate-800/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
     >
       <nav className="container mx-auto px-6 py-4">
@@ -105,11 +105,7 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div
-            className={`md:hidden mt-4 rounded-lg transition-all duration-300 ${
-              theme === 'owl'
-                ? 'bg-owl-secondary/90 backdrop-blur-md'
-                : 'bg-falcon-dark/90 backdrop-blur-md'
-            }`}
+            className="md:hidden mt-4 rounded-lg transition-all duration-300 bg-gradient-to-br from-slate-900/90 via-blue-900/90 to-slate-800/90 backdrop-blur-md"
           >
               <div className="px-4 py-6 space-y-4">
                 {navItems.map((item, index) => (
