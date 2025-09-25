@@ -4,7 +4,6 @@ import { useTheme } from "../context/ThemeContext";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import frameSvg from "../assets/svg/Frame 10.svg";
 import dropShadowSvg from "../assets/svg/Drop Shadow.svg";
 import card1Svg from "../assets/benefits/card-1.svg";
 import figma3Svg from "../assets/svg/figma3.svg";
@@ -268,16 +267,6 @@ const Hero = () => {
                   </button>
                 </div>
               </div>
-              <img
-                src={frameSvg}
-                alt="FINFXS Illustration"
-                className="relative w-full h-full object-contain"
-                style={{
-                  filter: 'brightness(0) saturate(100%) invert(75%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(95%)'
-                }}
-                loading="eager"
-                decoding="async"
-              />
               
               {/* Base blue overlay for general mixing */}
               <div 
