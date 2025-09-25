@@ -16,6 +16,9 @@ const PlatformSupport = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
     const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
     elements?.forEach((element) => {
       gsap.fromTo(

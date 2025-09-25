@@ -19,9 +19,9 @@ const Header = () => {
   const navigate = useNavigate();
   const navItems = [
     { name: 'Home', to: '/' },
+    { name: 'About', to: '/about' },
     { name: 'Platform', to: '/platform' },
     { name: 'Services', to: '/services' },
-    { name: 'AboutUs', to: '/about' },
     { name: 'Contact', to: '/contact' },
   ];
 

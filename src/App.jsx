@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home/Home';
-import About from './pages/About/AboutNew';
 import Features from './pages/services/Services';
 import Showcase from './pages/Showcase/Showcase';
+import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
 import Platforms from './pages/Platform/Platform';
 import RiskManagement from './pages/services/RiskManagement';
@@ -17,6 +17,11 @@ import CustomDevelopment from './pages/services/CustomDevelopment';
 
 function App() {
   const location = useLocation();
+
+  // Scroll to top when route changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <ThemeProvider>

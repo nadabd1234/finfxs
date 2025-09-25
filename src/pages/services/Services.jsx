@@ -114,7 +114,7 @@ const Service = () => {
     {
       title: "Risk Management",
       description:
-        "Advanced risk assessment and mitigation systems to protect your trading operations and ensure regulatory compliance.",
+        "Advanced risk assessment and mitigation systems with 12+ years of team experience. Reduce trading losses by 40% and improve risk-adjusted returns by 25%.",
       details: [
         "Real-time monitoring",
         "Automated alerts",
@@ -126,7 +126,7 @@ const Service = () => {
     {
       title: "Dealing Support",
       description:
-        "24/7 expert dealing desk support to manage your trading operations and client relationships effectively.",
+        "24/7 expert dealing desk support with 15+ years of team experience. Increase trading revenue by 35% with professional trade execution and client management.",
       details: [
         "Round-the-clock support",
         "Expert dealing team",

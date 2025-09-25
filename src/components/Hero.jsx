@@ -19,6 +19,11 @@ const Hero = () => {
   const { theme } = useTheme();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Scroll to top when component mounts (for home page)
+    window.scrollTo(0, 0);
+  }, []);
+
   // Smooth scroll to section
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -509,12 +514,7 @@ const Hero = () => {
                   >
                     Explore Our Solutions
                   </button>
-                  <button 
-                    onClick={() => navigate('/about')}
-                    className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-blue-900 font-semibold rounded-lg transition-all duration-300 hover:scale-105 text-lg"
-                  >
-                    Learn About Us
-                  </button>
+                  
                 </div>
                 
                 {/* Platform Icons */}

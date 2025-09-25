@@ -2,11 +2,16 @@ import Button from "../../components/ui/Button.jsx";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/Card.jsx";
 import { Download, ArrowRight, ExternalLink, X, CheckCircle, Zap, Shield, TrendingUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ficon from "../../assets/svg/Ficon.png";
 
 const Platforms = () => {
   const [selectedPlatform, setSelectedPlatform] = useState(null);
+
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+  }, []);
 
   const platformDetails = {
     MT4: {
