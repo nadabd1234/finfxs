@@ -233,9 +233,9 @@ const Hero = () => {
                 src={curvedLinesPng}
                 alt="Curved Lines"
                 className="w-full h-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
+              loading="lazy"
+              decoding="async"
+            />
             </div>
 
             {/* Main SVG with mixed white and teal overlay */}
