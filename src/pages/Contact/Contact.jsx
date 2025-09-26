@@ -158,7 +158,7 @@ const Contact = () => {
   return (
     <>
       {/* Hero Section with Map Background */}
-      <section className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 max-w-full">
+      <section className="relative h-[80vh] w-full overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 max-w-full">
         {/* Map Background */}
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-30"
@@ -221,36 +221,12 @@ const Contact = () => {
       <section
         ref={sectionRef}
         id="contact"
-        className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 w-full max-w-full overflow-x-hidden"
+        className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 w-full max-w-full overflow-x-hidden min-h-screen"
       >
 
-        {/* Round Icons Section */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex justify-center items-center space-x-4 sm:space-x-6 md:space-x-8 lg:space-x-12 flex-wrap gap-4">
-            {/* Icon 1 */}
-            <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
-              <Mail className="w-8 h-8 text-white" />
-            </div>
-
-            {/* Icon 2 */}
-            <div className="w-20 h-20 bg-gradient-to-br from-teal-500 to-teal-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
-              <Phone className="w-8 h-8 text-white" />
-            </div>
-
-            {/* Icon 3 */}
-            <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
-              <MessageCircle className="w-8 h-8 text-white" />
-            </div>
-
-            {/* Icon 4 */}
-            <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
-              <MapPin className="w-8 h-8 text-white" />
-            </div>
-          </div>
-        </div>
 
         {/* Contact Form and Location Section - Integrated into main layout */}
-        <div id="contact-form" className="relative z-10 w-full max-w-7xl mx-auto">
+        <div id="contact-form" className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {submitted && (
                   <div className="mb-6 max-w-3xl mx-auto rounded-xl border border-green-500/40 bg-green-500/10 text-green-200 px-4 py-3 text-center">
                     ✅ Message sent successfully! Our team will get back to you within 24 hours.
@@ -263,7 +239,7 @@ const Contact = () => {
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Contact Information */}
           <motion.div
             className="animate-on-scroll"
@@ -543,13 +519,13 @@ const Contact = () => {
 
         {/* Newsletter CTA */}
         <motion.div
-          className="animate-on-scroll mt-16"
+          className="animate-on-scroll mt-8"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <div className="rounded-2xl border border-slate-600/60 bg-slate-800/50 p-6 md:p-10 flex flex-col md:flex-row items-center gap-4 md:gap-6">
+          <div className="rounded-2xl border border-slate-600/60 bg-slate-800/50 p-4 md:p-6 flex flex-col md:flex-row items-center gap-4 md:gap-6">
             <div className="flex-1">
               <div className="text-2xl font-bold text-white">FINFX Market Insights</div>
               <div className="text-gray-300 text-sm">

@@ -12,7 +12,7 @@ import Typewriter from "typewriter-effect";
 
 // Import assets
 import frame8Svg from "../../assets/svg/Frame 8.svg";
-import curve from "../../assets/curve.png";
+
 import { GradientLight } from "../../components/design/Services";
 import { benefits } from "../../utils/services-constants";
 import ClipPath from "../../components/ui/ClipPath.jsx";
@@ -27,7 +27,7 @@ if (typeof window !== "undefined") {
 // Lightweight CopymAI-style showcase reused on Services page
 const CopymAISnippet = () => {
   return (
-    <div className="relative max-w-[23rem] mx-auto md:max-w-5xl xl:mb-16">
+    <div className="relative max-w-[23rem] mx-auto md:max-w-5xl xl:mb-8">
       <div className="relative z-10 p-0.5 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-500/50 shadow-2xl">
         <div className="relative bg-gradient-to-br from-slate-900/90 via-blue-900/90 to-slate-800/90 rounded-[1rem] overflow-hidden">
           <div className="h-[1.25rem] bg-gradient-to-br from-slate-800 to-blue-800 rounded-t-[0.9rem]" />
@@ -177,7 +177,7 @@ const Service = () => {
     <section
       ref={sectionRef}
       id="services"
-      className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 overflow-hidden pt-0"
+      className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 overflow-hidden pt-0 min-h-screen"
     >
       {/* Hero-style Header Section */}
        <Section
@@ -198,9 +198,9 @@ const Service = () => {
       </Section>
 
       {/* Main Services Grid Section */}
-      <div className="relative py-20 bg-n-8" id="service-details">
+      <div className="relative py-12 bg-n-8" id="service-details">
         <div className="container relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1.5rem] mb-[3rem]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1.5rem] mb-8">
             {services.map((service, index) => (
               <motion.div
                 key={index}
