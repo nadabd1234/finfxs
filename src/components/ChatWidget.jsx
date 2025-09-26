@@ -127,7 +127,7 @@ const ChatWidget = () => {
                   />
                 </div>
                 <div>
-                  <h3 className="font-bold text-sm">FINFXS Assistant</h3>
+                  <h3 className="font-bold text-sm">FINFXS ASSISTANT</h3>
                   <p className="text-xs text-blue-200">Hello there 👋</p>
                 </div>
               </div>

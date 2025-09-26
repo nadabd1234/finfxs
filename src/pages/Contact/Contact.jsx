@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTheme } from '../../context/ThemeContext';
 import { Mail, Phone, MapPin, MessageCircle, Twitter, Github, Linkedin } from 'lucide-react';
+import mapJpeg from '../../assets/svg/map.png';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -155,84 +156,101 @@ const Contact = () => {
   ];
 
   return (
-    <section
-      ref={sectionRef}
-      id="contact"
-      className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 min-h-screen flex items-center"
-    >
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        {/* Main hero layout - large heading left, contact cards right */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start min-h-[80vh] mb-16">
-          {/* Left side - Large heading */}
-          <motion.div
-            className="animate-on-scroll"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="text-left">
-              <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-8">
-              CONTACT US
-              </p>
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight mb-8">
-                CONTACT<br />
-                THE <span className="text-teal-400">FINFXS</span><br />
-                TEAM
-              </h1>
-              <div className="flex items-center text-gray-400 text-sm">
-                <div className="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center mr-3">
-                  <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                </div>
-                
-              </div>
+    <>
+      {/* Hero Section with Map Background */}
+      <section className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 max-w-full">
+        {/* Map Background */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-30"
+          style={{
+            backgroundImage: `url(${mapJpeg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        />
+        
+        {/* Fade Effect at Bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent"></div>
+        
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-blue-900/40 to-slate-800/60"></div>
+        
+        {/* Hero Content */}
+        <div className="relative z-10 h-full flex items-center justify-center">
+          <div className="text-center max-w-4xl px-4 sm:px-6 lg:px-8 w-full">
+            <motion.h1
+              className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              Get In <span className="bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent">Touch</span>
+            </motion.h1>
+            <motion.p
+              className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Connect with our team of fintech experts. We're here to help you build the future of finance.
+            </motion.p>
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <button 
+                onClick={() => document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' })}
+                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105"
+              >
+                Start a Conversation
+              </button>
+              <button 
+                onClick={() => document.getElementById('contact-info').scrollIntoView({ behavior: 'smooth' })}
+                className="px-8 py-4 border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-slate-900 font-semibold rounded-lg transition-all duration-300"
+              >
+                View Contact Info
+              </button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Contact Section */}
+      <section
+        ref={sectionRef}
+        id="contact"
+        className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 w-full max-w-full overflow-x-hidden"
+      >
+
+        {/* Round Icons Section */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex justify-center items-center space-x-4 sm:space-x-6 md:space-x-8 lg:space-x-12 flex-wrap gap-4">
+            {/* Icon 1 */}
+            <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+              <Mail className="w-8 h-8 text-white" />
             </div>
-          </motion.div>
 
-          {/* Right side - Contact info grid */}
-          <motion.div
-            className="animate-on-scroll"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {/* Email Card */}
-              <div className="bg-slate-800/50 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-slate-800/70 transition-all duration-300">
-                <div className="flex items-center mb-4">
-                  <Mail className="w-6 h-6 text-teal-400 mr-3" />
-                  <span className="text-white font-semibold">EMAIL</span>
-                </div>
-                <div className="text-gray-300 text-sm mb-1">hello@finfx.com</div>
-              </div>
-
-              
-              {/* Phone Card */}
-              <div className="bg-slate-800/50 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-slate-800/70 transition-all duration-300">
-                <div className="flex items-center mb-4">
-                  <Phone className="w-6 h-6 text-teal-400 mr-3" />
-                  <span className="text-white font-semibold">PHONE</span>
-                </div>
-                <div className="text-gray-300 text-sm">+1 (888) 555-0192</div>
-              </div>
-
-              {/* Platform Support Card */}
-              <div className="bg-slate-800/50 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-slate-800/70 transition-all duration-300">
-                <div className="flex items-center mb-4">
-                  <MessageCircle className="w-6 h-6 text-teal-400 mr-3" />
-                  <span className="text-white font-semibold">PLATFORM SUPPORT</span>
-                </div>
-                <div className="text-gray-300 text-sm">
-                  24/7 technical support for MT4, MT5, and DX Trade platforms with 99.97% uptime guarantee.
-                </div>
-              </div>
+            {/* Icon 2 */}
+            <div className="w-20 h-20 bg-gradient-to-br from-teal-500 to-teal-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+              <Phone className="w-8 h-8 text-white" />
             </div>
-          </motion.div>
+
+            {/* Icon 3 */}
+            <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+              <MessageCircle className="w-8 h-8 text-white" />
+            </div>
+
+            {/* Icon 4 */}
+            <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-700 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+              <MapPin className="w-8 h-8 text-white" />
+            </div>
+          </div>
         </div>
 
         {/* Contact Form and Location Section - Integrated into main layout */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto">
+        <div id="contact-form" className="relative z-10 w-full max-w-7xl mx-auto">
                 {submitted && (
                   <div className="mb-6 max-w-3xl mx-auto rounded-xl border border-green-500/40 bg-green-500/10 text-green-200 px-4 py-3 text-center">
                     ✅ Message sent successfully! Our team will get back to you within 24 hours.
@@ -452,6 +470,7 @@ const Contact = () => {
 
           {/* Right column: Map + Social */}
           <motion.div
+            id="contact-info"
             className="animate-on-scroll"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -551,9 +570,9 @@ const Contact = () => {
             </form>
           </div>
         </motion.div>
-        </div>
       </div>
     </section>
+    </>
   );
 };
 
