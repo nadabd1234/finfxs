@@ -7,6 +7,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import dropShadowSvg from "../assets/svg/Drop Shadow.svg";
 import card1Svg from "../assets/benefits/card-1.svg";
 import figma3Svg from "../assets/svg/figma3.svg";
+import curvedLinesPng from "../assets/svg/curvedlines.png";
+import cdTradePng from "../assets/svg/cdtrade.png";
+import cdTradesPng from "../assets/svg/cdtrades.png";
+import matchTradePng from "../assets/svg/matchttrade.png";
+import metaQuotesPng from "../assets/svg/metaquotes.png";
+import techSolPng from "../assets/svg/techsol.png";
 import ClipPathTitle from "./ClipPathTitle";
 
 if (typeof window !== "undefined") {
@@ -220,17 +226,17 @@ const Hero = () => {
       <div className="relative z-10 w-screen h-screen flex items-center justify-center">
         <div className="relative w-full h-full flex items-center justify-center bg-slate-800/20 backdrop-blur-sm">
           <div className="relative w-full h-full flex items-center justify-center">
-            {/* Shadow SVG (placed behind the main SVG) */}
-            <img
-              src={dropShadowSvg}
-              alt="Drop Shadow"
-              className="absolute w-full h-full object-contain opacity-25 -z-10"
-              style={{
-                filter: 'brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(80%) contrast(90%)'
-              }}
-              loading="lazy"
-              decoding="async"
-            />
+            
+            {/* Curved Lines Image - Right Side */}
+            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-30 w-1/2 h-full opacity-70">
+              <img
+                src={curvedLinesPng}
+                alt="Curved Lines"
+                className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
 
             {/* Main SVG with mixed white and teal overlay */}
             <div className="relative w-full h-full">
@@ -268,69 +274,6 @@ const Hero = () => {
                 </div>
               </div>
               
-              {/* Base blue overlay for general mixing */}
-              <div 
-                className="absolute inset-0 w-full h-full mix-blend-multiply opacity-40"
-                style={{
-                  background: 'linear-gradient(45deg, rgba(30, 64, 175, 0.6) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(30, 64, 175, 0.4) 100%)'
-                }}
-              />
-              
-              {/* Targeted mask for thin rope lines - vertical lines */}
-              <div 
-                className="absolute inset-0 w-full h-full mix-blend-overlay opacity-80"
-                style={{
-                  background: `
-                    repeating-linear-gradient(
-                      90deg,
-                      transparent 0%,
-                      transparent 2%,
-                      rgba(30, 64, 175, 0.9) 2.2%,
-                      rgba(30, 64, 175, 0.9) 2.8%,
-                      transparent 3%,
-                      transparent 8%
-                    ),
-                    repeating-linear-gradient(
-                      0deg,
-                      transparent 0%,
-                      transparent 3%,
-                      rgba(30, 64, 175, 0.7) 3.2%,
-                      rgba(30, 64, 175, 0.7) 3.8%,
-                      transparent 4%,
-                      transparent 12%
-                    )
-                  `,
-                  maskImage: 'radial-gradient(ellipse 80% 60% at center, black 20%, transparent 70%)'
-                }}
-              />
-              
-              {/* Additional rope line emphasis - curved paths */}
-              <div 
-                className="absolute inset-0 w-full h-full mix-blend-color-burn opacity-50"
-                      style={{
-                  background: `
-                    conic-gradient(
-                      from 45deg at 30% 40%, 
-                      transparent 0deg, 
-                      rgba(30, 64, 175, 0.8) 30deg, 
-                      rgba(255, 255, 255, 0.3) 60deg, 
-                      rgba(30, 64, 175, 0.8) 90deg, 
-                      transparent 120deg, 
-                      transparent 360deg
-                    ),
-                    conic-gradient(
-                      from 135deg at 70% 60%, 
-                      transparent 0deg, 
-                      rgba(30, 64, 175, 0.6) 45deg, 
-                      rgba(255, 255, 255, 0.4) 90deg, 
-                      rgba(30, 64, 175, 0.6) 135deg, 
-                      transparent 180deg, 
-                      transparent 360deg
-                    )
-                  `,
-                  clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
-                }}
-              />
             </div>
           </div>
         </div>
@@ -509,22 +452,54 @@ const Hero = () => {
                 {/* Platform Icons */}
                 <div className="mt-16 flex justify-center items-center gap-12">
                   <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center mb-3 mx-auto">
-                      <span className="text-white font-bold text-lg">MT4</span>
+                    <div className="w-24 h-24 flex items-center justify-center mb-3 mx-auto">
+                      <img 
+                        src={metaQuotesPng} 
+                        alt="MetaQuotes" 
+                        className="w-full h-full object-contain"
+                        loading="lazy"
+                      />
                     </div>
-                    <p className="text-sm text-gray-400 font-medium">MetaTrader 4</p>
                   </div>
                   <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
-                    <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-700 rounded-xl flex items-center justify-center mb-3 mx-auto">
-                      <span className="text-white font-bold text-lg">MT5</span>
+                    <div className="w-24 h-24 flex items-center justify-center mb-3 mx-auto">
+                      <img 
+                        src={cdTradePng} 
+                        alt="CDTrade" 
+                        className="w-full h-full object-contain"
+                        loading="lazy"
+                      />
                     </div>
-                    <p className="text-sm text-gray-400 font-medium">MetaTrader 5</p>
                   </div>
                   <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
-                    <div className="w-20 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center mb-3 mx-auto">
-                      <span className="text-white font-bold text-sm">DX</span>
+                    <div className="w-24 h-24 flex items-center justify-center mb-3 mx-auto">
+                      <img 
+                        src={matchTradePng} 
+                        alt="Match Trade" 
+                        className="w-full h-full object-contain"
+                        loading="lazy"
+                      />
                     </div>
-                    <p className="text-sm text-gray-400 font-medium">DXtrade</p>
+                  </div>
+                  <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
+                    <div className="w-24 h-24 flex items-center justify-center mb-3 mx-auto">
+                      <img 
+                        src={cdTradesPng} 
+                        alt="CDTrades" 
+                        className="w-full h-full object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                  <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
+                    <div className="w-24 h-24 flex items-center justify-center mb-3 mx-auto">
+                      <img 
+                        src={techSolPng} 
+                        alt="Tech Solutions" 
+                        className="w-full h-full object-contain"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -536,6 +511,96 @@ const Hero = () => {
       {/* Benefits Section - Moved from Services */}
       <div id="services-section">
         <BenefitSection />
+      </div>
+
+      {/* Geometric Design Section */}
+      <div className="relative w-full h-screen bg-white overflow-hidden">
+        {/* Background Rectangle */}
+        <div className="absolute inset-0 w-full h-full bg-gray-300"></div>
+        
+        {/* Vector 2 - Large curved shape */}
+        <div 
+          className="absolute border border-[#10126E]"
+          style={{
+            width: '683.82px',
+            height: '585.58px',
+            left: '175.53px',
+            top: '236.45px'
+          }}
+        ></div>
+        
+        {/* Vector 3 - Medium curved shape */}
+        <div 
+          className="absolute border border-[#0B0C5F]"
+          style={{
+            width: '438.87px',
+            height: '193.92px',
+            left: '642.46px',
+            top: '719.97px'
+          }}
+        ></div>
+        
+        {/* Ellipse 1 - Small circle */}
+        <div 
+          className="absolute bg-[#0B0C5F] rounded-full"
+          style={{
+            width: '165.85px',
+            height: '173.48px',
+            left: '111.7px',
+            top: '425.26px'
+          }}
+        ></div>
+        
+        {/* Ellipse 2 - Medium circle */}
+        <div 
+          className="absolute bg-[#0B0C5F] rounded-full"
+          style={{
+            width: '140.34px',
+            height: '156.95px',
+            left: '277.56px',
+            top: '251.76px'
+          }}
+        ></div>
+        
+        {/* Ellipse 3 - Large oval */}
+        <div 
+          className="absolute bg-[#0B0C5F] rounded-full"
+          style={{
+            width: '1005.74px',
+            height: '247.71px',
+            left: '334.76px',
+            top: '415.52px'
+          }}
+        ></div>
+        
+        {/* Ellipse 4 - Small circle */}
+        <div 
+          className="absolute bg-[#0B0C5F] rounded-full"
+          style={{
+            width: '134.38px',
+            height: '146.82px',
+            left: '725.04px',
+            top: '438.59px'
+          }}
+        ></div>
+        
+        {/* Content overlay */}
+        <div className="absolute inset-0 flex items-center justify-center z-10">
+          <div className="text-center max-w-4xl px-8">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-[#0B0C5F] mb-8 leading-tight">
+              Geometric <span className="text-[#10126E]">Design</span>
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto">
+              Modern geometric elements creating visual harmony and professional aesthetics
+            </p>
+            <button 
+              onClick={() => navigate('/contact')}
+              className="px-8 py-4 bg-[#0B0C5F] hover:bg-[#10126E] text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 text-lg"
+            >
+              Get In Touch
+            </button>
+          </div>
+        </div>
       </div>
     </section>
     </>
