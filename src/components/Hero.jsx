@@ -238,8 +238,8 @@ const Hero = () => {
                 src={ringPng}
                 alt="Central Ring"
                 className="w-96 h-96 md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem] xl:w-[36rem] xl:h-[36rem] object-contain"
-                loading="lazy"
-                decoding="async"
+              loading="lazy"
+              decoding="async"
                 initial={{ opacity: 0, scale: 0.5, rotate: -180 }}
                 animate={{ 
                   opacity: 1, 
@@ -529,7 +529,7 @@ const Hero = () => {
                           />
                         </div>
                       </div>
-                      <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
+                  <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
                         <div className="w-32 h-32 flex items-center justify-center mb-3 mx-auto">
                           <img 
                             src={techSolPng} 
@@ -572,8 +572,8 @@ const Hero = () => {
                             loading="lazy"
                           />
                         </div>
-                      </div>
-                      <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
+                  </div>
+                  <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
                         <div className="w-32 h-32 flex items-center justify-center mb-3 mx-auto">
                           <img 
                             src={cdTradesPng} 
@@ -581,9 +581,9 @@ const Hero = () => {
                             className="w-full h-full object-contain"
                             loading="lazy"
                           />
-                        </div>
-                      </div>
-                      <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
+                    </div>
+                  </div>
+                  <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
                         <div className="w-32 h-32 flex items-center justify-center mb-3 mx-auto">
                           <img 
                             src={techSolPng} 
