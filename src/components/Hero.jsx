@@ -4,10 +4,12 @@ import { useTheme } from "../context/ThemeContext";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Play, Download, Folder, Settings, Zap, Shield, Code, TrendingUp } from "lucide-react";
 import dropShadowSvg from "../assets/svg/Drop Shadow.svg";
 import card1Svg from "../assets/benefits/card-1.svg";
 import figma3Svg from "../assets/svg/figma3.svg";
-import curvedLinesPng from "../assets/svg/curvedlines.png";
+
+import ringPng from "../assets/svg/RING.png";
 import cdTradePng from "../assets/svg/cdtrade.png";
 import cdTradesPng from "../assets/svg/cdtrades.png";
 import matchTradePng from "../assets/svg/matchttrade.png";
@@ -219,36 +221,69 @@ const Hero = () => {
     <>
     <section
       id="home"
-      className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white"
+      className="relative min-h-screen bg-gradient-to-br from-black via-[#0A0F18] to-[#132840] text-white overflow-hidden"
     >
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 via-transparent to-blue-500/5" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-teal-500/10 via-transparent to-transparent" />
 
       {/* Hero Content */}
       <div className="relative z-10 w-screen h-screen flex items-center justify-center">
-        <div className="relative w-full h-full flex items-center justify-center bg-slate-800/20 backdrop-blur-sm">
+        <div className="relative w-full h-full flex items-center justify-center">
           <div className="relative w-full h-full flex items-center justify-center">
             
-            {/* Curved Lines Image - Right Side */}
-            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-30 w-1/2 h-full opacity-70">
-              <img
-                src={curvedLinesPng}
-                alt="Curved Lines"
-                className="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
+            {/* Central Ring - Behind Text */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+              <motion.img
+                src={ringPng}
+                alt="Central Ring"
+                className="w-96 h-96 md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem] xl:w-[36rem] xl:h-[36rem] object-contain"
+                loading="lazy"
+                decoding="async"
+                initial={{ opacity: 0, scale: 0.5, rotate: -180 }}
+                animate={{ 
+                  opacity: 1, 
+                  scale: [1, 1.05, 1],
+                  rotate: [0, 5, 0]
+                }}
+                transition={{ 
+                  opacity: { duration: 2, ease: "easeOut", delay: 0.5 },
+                  scale: {
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  },
+                  rotate: {
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }
+                }}
+                whileHover={{ 
+                  scale: 1.1, 
+                  rotate: 360,
+                  transition: { duration: 1 }
+                }}
+                style={{
+                  filter: 'drop-shadow(0 0 30px rgba(20, 184, 166, 0.6)) drop-shadow(0 0 60px rgba(59, 130, 246, 0.4))'
+                }}
+              />
             </div>
 
+
+            
+
             {/* Main SVG with mixed white and teal overlay */}
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-full z-20">
               {/* Text in Curved Box Area */}
-              <div className="absolute top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+              <div className="absolute top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
                 <h1 className="text-sm md:text-base lg:text-lg font-medium text-white text-center whitespace-nowrap">
                   The Future of Finance is
                 </h1>
         </div>
 
               {/* Main Content Below */}
-              <div className="absolute inset-0 z-20 flex items-end justify-center pb-20">
+              <div className="absolute inset-0 z-30 flex items-end justify-center pb-20">
                 <div className="text-center max-w-4xl px-8">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
                     <span className="text-2xl md:text-3xl lg:text-4xl bg-gradient-to-r from-blue-300 via-blue-200 to-blue-400 bg-clip-text text-transparent">
@@ -449,56 +484,115 @@ const Hero = () => {
                   
                 </div>
                 
-                {/* Platform Icons */}
-                <div className="mt-16 flex justify-center items-center gap-12">
-                  <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
-                    <div className="w-24 h-24 flex items-center justify-center mb-3 mx-auto">
-                      <img 
-                        src={metaQuotesPng} 
-                        alt="MetaQuotes" 
-                        className="w-full h-full object-contain"
-                        loading="lazy"
-                      />
+                {/* Platform Icons - Moving Loop Animation */}
+                <div className="mt-16 overflow-hidden">
+                  <div className="flex items-center gap-16 animate-marquee">
+                    {/* First set of logos */}
+                    <div className="flex items-center gap-16 flex-shrink-0">
+                      <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
+                        <div className="w-32 h-32 flex items-center justify-center mb-3 mx-auto">
+                          <img 
+                            src={metaQuotesPng} 
+                            alt="MetaQuotes" 
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                      <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
+                        <div className="w-32 h-32 flex items-center justify-center mb-3 mx-auto">
+                          <img 
+                            src={cdTradePng} 
+                            alt="CDTrade" 
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                      <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
+                        <div className="w-32 h-32 flex items-center justify-center mb-3 mx-auto">
+                          <img 
+                            src={matchTradePng} 
+                            alt="Match Trade" 
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                      <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
+                        <div className="w-32 h-32 flex items-center justify-center mb-3 mx-auto">
+                          <img 
+                            src={cdTradesPng} 
+                            alt="CDTrades" 
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                      <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
+                        <div className="w-32 h-32 flex items-center justify-center mb-3 mx-auto">
+                          <img 
+                            src={techSolPng} 
+                            alt="Tech Solutions" 
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
-                    <div className="w-24 h-24 flex items-center justify-center mb-3 mx-auto">
-                      <img 
-                        src={cdTradePng} 
-                        alt="CDTrade" 
-                        className="w-full h-full object-contain"
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-                  <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
-                    <div className="w-24 h-24 flex items-center justify-center mb-3 mx-auto">
-                      <img 
-                        src={matchTradePng} 
-                        alt="Match Trade" 
-                        className="w-full h-full object-contain"
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-                  <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
-                    <div className="w-24 h-24 flex items-center justify-center mb-3 mx-auto">
-                      <img 
-                        src={cdTradesPng} 
-                        alt="CDTrades" 
-                        className="w-full h-full object-contain"
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-                  <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
-                    <div className="w-24 h-24 flex items-center justify-center mb-3 mx-auto">
-                      <img 
-                        src={techSolPng} 
-                        alt="Tech Solutions" 
-                        className="w-full h-full object-contain"
-                        loading="lazy"
-                      />
+                    
+                    {/* Duplicate set for seamless loop */}
+                    <div className="flex items-center gap-16 flex-shrink-0">
+                      <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
+                        <div className="w-32 h-32 flex items-center justify-center mb-3 mx-auto">
+                          <img 
+                            src={metaQuotesPng} 
+                            alt="MetaQuotes" 
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                      <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
+                        <div className="w-32 h-32 flex items-center justify-center mb-3 mx-auto">
+                          <img 
+                            src={cdTradePng} 
+                            alt="CDTrade" 
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                      <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
+                        <div className="w-32 h-32 flex items-center justify-center mb-3 mx-auto">
+                          <img 
+                            src={matchTradePng} 
+                            alt="Match Trade" 
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                      <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
+                        <div className="w-32 h-32 flex items-center justify-center mb-3 mx-auto">
+                          <img 
+                            src={cdTradesPng} 
+                            alt="CDTrades" 
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                      <div className="text-center cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => navigate('/platform')}>
+                        <div className="w-32 h-32 flex items-center justify-center mb-3 mx-auto">
+                          <img 
+                            src={techSolPng} 
+                            alt="Tech Solutions" 
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -507,6 +601,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
 
       {/* Benefits Section - Moved from Services */}
       <div id="services-section">

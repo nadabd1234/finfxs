@@ -527,7 +527,7 @@ const Contact = () => {
         >
           <div className="rounded-2xl border border-slate-600/60 bg-slate-800/50 p-4 md:p-6 flex flex-col md:flex-row items-center gap-4 md:gap-6">
             <div className="flex-1">
-              <div className="text-2xl font-bold text-white">FINFX Market Insights</div>
+              <div className="text-2xl font-bold text-white">FINFXS MARKET INSIGHTS </div>
               <div className="text-gray-300 text-sm">
                 Stay ahead with weekly market analysis, platform updates, and exclusive fintech industry reports. 
                 <span className="block mt-1 text-xs text-gray-400">Join 2,500+ brokers and traders • Unsubscribe anytime</span>
