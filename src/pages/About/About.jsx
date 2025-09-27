@@ -16,10 +16,14 @@ import {
   CheckCircle,
   Star,
   Building2,
-  Target
+  Target,
+  ArrowRight,
+  ExternalLink,
+  Play
 } from 'lucide-react';
 import ringPng from '../../assets/svg/RING.png';
 import curvedlinesPng from '../../assets/svg/curvedlines.png';
+import SplitButton from '../../components/ui/SplitButton';
 import '../../styles/about.css';
 
 if (typeof window !== 'undefined') {
@@ -60,8 +64,8 @@ const About = () => {
   const HeroSection = () => (
     <div className="relative min-h-screen bg-gradient-to-br from-black via-[#0A0F18] to-[#132840] flex items-center justify-center overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 via-transparent to-blue-500/5" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-teal-500/10 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#015660]/5 via-transparent to-[#015660]/5" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#015660]/10 via-transparent to-transparent" />
       
       {/* Central Glowing Ring - Behind Text */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
@@ -105,7 +109,7 @@ const About = () => {
         >
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
             THE NEW ERA OF
-            <span className="block bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-[#015660] to-[#02B1C6] bg-clip-text text-transparent">
               FINANCIAL TECHNOLOGY
             </span>
           </h1>
@@ -121,19 +125,55 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <button 
-            onClick={() => navigate('/services')}
-            className="px-8 py-4 bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105"
-          >
-            Explore Our Solutions
-          </button>
+          <SplitButton
+            mainText="Explore Our Solutions"
+            mainAction={() => navigate('/services')}
+            dropdownItems={[
+              {
+                label: "View All Services",
+                action: () => navigate('/services'),
+                icon: <ArrowRight className="w-4 h-4" />
+              },
+              {
+                label: "Platform Integration",
+                action: () => navigate('/platform'),
+                icon: <Code className="w-4 h-4" />
+              },
+              {
+                label: "Contact Sales",
+                action: () => navigate('/contact'),
+                icon: <ExternalLink className="w-4 h-4" />
+              }
+            ]}
+            variant="hero"
+            size="lg"
+            className="hover:scale-105 transition-transform duration-300"
+          />
           
-          <button 
-            onClick={() => navigate('/contact')}
-            className="px-8 py-4 border-2 border-white/20 hover:border-white/40 text-white font-semibold rounded-full transition-all duration-300 hover:bg-white/10"
-          >
-            Get In Touch
-          </button>
+          <SplitButton
+            mainText="Get In Touch"
+            mainAction={() => navigate('/contact')}
+            dropdownItems={[
+              {
+                label: "Contact Form",
+                action: () => navigate('/contact'),
+                icon: <ArrowRight className="w-4 h-4" />
+              },
+              {
+                label: "Schedule Meeting",
+                action: () => navigate('/contact'),
+                icon: <ExternalLink className="w-4 h-4" />
+              },
+              {
+                label: "View Portfolio",
+                action: () => navigate('/showcase'),
+                icon: <Play className="w-4 h-4" />
+              }
+            ]}
+            variant="outline"
+            size="lg"
+            className="hover:scale-105 transition-transform duration-300"
+          />
         </motion.div>
 
         <motion.p
@@ -159,14 +199,14 @@ const About = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="relative h-96 bg-gradient-to-br from-blue-50 via-white to-blue-50 backdrop-blur-sm border border-blue-200 rounded-3xl shadow-lg">
+          <div className="relative h-96 bg-gradient-to-br from-black/20 via-[#015660]/10 to-black/20 backdrop-blur-sm border border-[#015660]/30 rounded-3xl shadow-lg">
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
-                <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
+                <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-[#015660] to-[#02B1C6] rounded-full flex items-center justify-center">
                   <Building2 className="w-16 h-16 text-white" />
                 </div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">Enterprise-Grade Infrastructure</h3>
-                <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                <h3 className="text-3xl font-bold text-white mb-4">Enterprise-Grade Infrastructure</h3>
+                <p className="text-gray-300 text-lg max-w-2xl mx-auto">
                   From high-frequency trading systems to risk management platforms, 
                   we build the technology that powers modern finance.
                 </p>
@@ -189,8 +229,8 @@ const About = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">By The Numbers</h2>
-          <p className="text-gray-600 text-lg">Trusted by leading financial institutions worldwide</p>
+          <h2 className="text-4xl font-bold text-white mb-4">By The Numbers</h2>
+          <p className="text-gray-300 text-lg">Trusted by leading financial institutions worldwide</p>
         </motion.div>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -208,11 +248,11 @@ const About = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="rounded-2xl border border-blue-200 bg-white p-6 text-center hover:bg-blue-50 transition-all duration-300 shadow-md">
-                <stat.icon className="w-8 h-8 text-blue-600 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</div>
-                <div className="text-gray-700 font-medium">{stat.label}</div>
-                <div className="text-gray-500 text-sm mt-1">{stat.desc}</div>
+              <div className="rounded-2xl border border-[#015660]/30 bg-black/20 backdrop-blur-sm p-6 text-center hover:bg-[#015660]/10 transition-all duration-300 shadow-md">
+                <stat.icon className="w-8 h-8 text-[#015660] mx-auto mb-3" />
+                <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
+                <div className="text-gray-300 font-medium">{stat.label}</div>
+                <div className="text-gray-400 text-sm mt-1">{stat.desc}</div>
               </div>
             </motion.div>
           ))}
@@ -232,8 +272,8 @@ const About = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Expertise</h2>
-          <p className="text-gray-600 text-lg">Core competencies that drive our success</p>
+          <h2 className="text-4xl font-bold text-white mb-4">Our Expertise</h2>
+          <p className="text-gray-300 text-lg">Core competencies that drive our success</p>
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -253,10 +293,10 @@ const About = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="rounded-2xl border border-blue-200 bg-white p-6 hover:bg-blue-50 transition-all duration-300 h-full shadow-md">
-                <skill.icon className="w-10 h-10 text-blue-600 mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{skill.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{skill.desc}</p>
+              <div className="rounded-2xl border border-[#015660]/30 bg-black/20 backdrop-blur-sm p-6 hover:bg-[#015660]/10 transition-all duration-300 h-full shadow-md">
+                <skill.icon className="w-10 h-10 text-[#015660] mb-4" />
+                <h3 className="text-xl font-bold text-white mb-3">{skill.title}</h3>
+                <p className="text-gray-300 leading-relaxed">{skill.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -277,8 +317,8 @@ const About = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
-            <div className="space-y-4 text-gray-600 leading-relaxed">
+            <h2 className="text-4xl font-bold text-white mb-6">Our Story</h2>
+            <div className="space-y-4 text-gray-300 leading-relaxed">
               <p>
                 Founded by a team of former Wall Street engineers and fintech veterans, 
                 FINFXS emerged from a simple observation: the financial technology landscape 
@@ -304,8 +344,8 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="rounded-2xl border border-blue-200 bg-white p-8 shadow-md">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Values</h3>
+            <div className="rounded-2xl border border-[#015660]/30 bg-black/20 backdrop-blur-sm p-8 shadow-md">
+              <h3 className="text-2xl font-bold text-white mb-6">Our Values</h3>
               <div className="space-y-4">
                 {[
                   { icon: Target, title: 'Precision', desc: 'Every millisecond counts in finance' },
@@ -314,10 +354,10 @@ const About = () => {
                   { icon: Award, title: 'Excellence', desc: 'Never settle for good enough' },
                 ].map((value, index) => (
                   <div key={value.title} className="flex items-start space-x-3">
-                    <value.icon className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
+                    <value.icon className="w-6 h-6 text-[#015660] mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="text-gray-900 font-semibold">{value.title}</h4>
-                      <p className="text-gray-600 text-sm">{value.desc}</p>
+                      <h4 className="text-white font-semibold">{value.title}</h4>
+                      <p className="text-gray-300 text-sm">{value.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -340,8 +380,8 @@ const About = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Meet The Team</h2>
-          <p className="text-gray-600 text-lg">The experts behind our technology</p>
+          <h2 className="text-4xl font-bold text-white mb-4">Meet The Team</h2>
+          <p className="text-gray-300 text-lg">The experts behind our technology</p>
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -361,13 +401,13 @@ const About = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="rounded-2xl border border-blue-200 bg-white p-6 text-center hover:bg-blue-50 transition-all duration-300 shadow-md">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full mx-auto mb-4 flex items-center justify-center">
+              <div className="rounded-2xl border border-[#015660]/30 bg-black/20 backdrop-blur-sm p-6 text-center hover:bg-[#015660]/10 transition-all duration-300 shadow-md">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#015660] to-[#02B1C6] rounded-full mx-auto mb-4 flex items-center justify-center">
                   <span className="text-white font-bold text-xl">{member.name.split(' ').map(n => n[0]).join('')}</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
-                <p className="text-blue-600 font-medium mb-3">{member.role}</p>
-                <p className="text-gray-600 text-sm leading-relaxed">{member.expertise}</p>
+                <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
+                <p className="text-[#015660] font-medium mb-3">{member.role}</p>
+                <p className="text-gray-300 text-sm leading-relaxed">{member.expertise}</p>
               </div>
             </motion.div>
           ))}
@@ -387,24 +427,60 @@ const About = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="rounded-3xl border border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50 backdrop-blur-sm p-12 shadow-lg">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Ready to Transform Your Trading Infrastructure?</h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <div className="rounded-3xl border border-[#015660]/30 bg-gradient-to-br from-black/20 via-[#015660]/10 to-black/20 backdrop-blur-sm p-12 shadow-lg">
+            <h2 className="text-4xl font-bold text-white mb-6">Ready to Transform Your Trading Infrastructure?</h2>
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
               Join the growing number of firms who trust FINFXS to power their most critical trading operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => navigate('/contact')}
-                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105"
-              >
-                Start Your Project
-              </button>
-              <button 
-                onClick={() => navigate('/services')}
-                className="px-8 py-4 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold rounded-lg transition-all duration-300"
-              >
-                View Our Services
-              </button>
+              <SplitButton
+                mainText="Start Your Project"
+                mainAction={() => navigate('/contact')}
+                dropdownItems={[
+                  {
+                    label: "Contact Form",
+                    action: () => navigate('/contact'),
+                    icon: <ArrowRight className="w-4 h-4" />
+                  },
+                  {
+                    label: "Schedule Meeting",
+                    action: () => navigate('/contact'),
+                    icon: <ExternalLink className="w-4 h-4" />
+                  },
+                  {
+                    label: "View Portfolio",
+                    action: () => navigate('/showcase'),
+                    icon: <Play className="w-4 h-4" />
+                  }
+                ]}
+                variant="hero"
+                size="lg"
+                className="hover:scale-105 transition-transform duration-300"
+              />
+              <SplitButton
+                mainText="View Our Services"
+                mainAction={() => navigate('/services')}
+                dropdownItems={[
+                  {
+                    label: "All Services",
+                    action: () => navigate('/services'),
+                    icon: <ArrowRight className="w-4 h-4" />
+                  },
+                  {
+                    label: "Platform Support",
+                    action: () => navigate('/services/platform-support'),
+                    icon: <Code className="w-4 h-4" />
+                  },
+                  {
+                    label: "Risk Management",
+                    action: () => navigate('/services/risk-management'),
+                    icon: <Shield className="w-4 h-4" />
+                  }
+                ]}
+                variant="outline"
+                size="lg"
+                className="hover:scale-105 transition-transform duration-300"
+              />
             </div>
           </div>
         </motion.div>
@@ -423,8 +499,8 @@ const About = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Trusted By Industry Leaders</h2>
-          <p className="text-gray-600 text-lg">Powering the world's most demanding trading operations</p>
+          <h2 className="text-4xl font-bold text-white mb-4">Trusted By Industry Leaders</h2>
+          <p className="text-gray-300 text-lg">Powering the world's most demanding trading operations</p>
         </motion.div>
         
         <motion.div
@@ -440,9 +516,9 @@ const About = () => {
           ].map((client, index) => (
             <div
               key={client}
-              className="flex items-center justify-center p-4 rounded-lg border border-blue-200 bg-white hover:bg-blue-50 transition-all duration-300 shadow-md"
+              className="flex items-center justify-center p-4 rounded-lg border border-[#015660]/30 bg-black/20 backdrop-blur-sm hover:bg-[#015660]/10 transition-all duration-300 shadow-md"
             >
-              <span className="text-gray-700 font-medium text-sm text-center">{client}</span>
+              <span className="text-gray-300 font-medium text-sm text-center">{client}</span>
             </div>
           ))}
         </motion.div>
@@ -451,19 +527,35 @@ const About = () => {
   );
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 text-gray-900">
-      {/* Decorative Element with Curved Lines */}
-      <div 
-        className="absolute left-0 top-8 w-[183px] h-[913px] rounded-[92px] z-0"
-        style={{
-          background: 'linear-gradient(180deg, #008290 4.2%, #008290 31.75%, #00262A 90.51%)'
-        }}
-      >
-        <img 
-          src={curvedlinesPng} 
-          alt="Curved Lines Decoration" 
-          className="w-full h-full object-cover rounded-[92px] opacity-80"
-          loading="lazy"
+    <section ref={sectionRef} className="relative min-h-screen bg-gradient-to-br from-black via-[#0A0F18] to-[#132840] text-white overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#015660]/5 via-transparent to-[#015660]/5" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#015660]/10 via-transparent to-transparent" />
+      
+      {/* Gradient Rope Effects */}
+      <div className="absolute inset-0">
+        {/* Main rope effect - diagonal */}
+        <div 
+          className="absolute w-full h-full opacity-20"
+          style={{
+            background: `
+              linear-gradient(45deg, transparent 0%, rgba(1, 86, 96, 0.3) 25%, rgba(1, 86, 96, 0.6) 50%, rgba(1, 86, 96, 0.3) 75%, transparent 100%),
+              linear-gradient(-45deg, transparent 0%, rgba(1, 86, 96, 0.2) 30%, rgba(1, 86, 96, 0.4) 60%, rgba(1, 86, 96, 0.2) 90%, transparent 100%)
+            `,
+            filter: 'blur(1px)'
+          }}
+        />
+        
+        {/* Secondary rope effect - curved */}
+        <div 
+          className="absolute w-full h-full opacity-15"
+          style={{
+            background: `
+              radial-gradient(ellipse 800px 200px at 20% 30%, rgba(1, 86, 96, 0.4) 0%, transparent 50%),
+              radial-gradient(ellipse 600px 150px at 80% 70%, rgba(1, 86, 96, 0.3) 0%, transparent 50%)
+            `,
+            filter: 'blur(2px)'
+          }}
         />
       </div>
       

@@ -110,6 +110,17 @@ const Platforms = () => {
     <section className="relative bg-gradient-to-br from-black via-[#0A0F18] to-[#132840] overflow-hidden">
       {/* Modern Hero Section */}
       <div className="relative min-h-screen bg-gradient-to-br from-black via-[#0A0F18] to-[#132840] flex items-center justify-center overflow-hidden">
+        {/* Shadow1 SVG on the left side */}
+        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-80 h-80 opacity-15">
+          <img 
+            src={shadow1Svg} 
+            alt="" 
+            className="w-full h-full object-contain"
+            loading="lazy"
+            aria-hidden="true"
+          />
+        </div>
+        
         {/* Background Effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 via-transparent to-blue-500/5" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-teal-500/10 via-transparent to-transparent" />

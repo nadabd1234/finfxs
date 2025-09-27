@@ -4,7 +4,7 @@ import { useTheme } from "../context/ThemeContext";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Play, Download, Folder, Settings, Zap, Shield, Code, TrendingUp } from "lucide-react";
+import { Play, Download, Folder, Settings, Zap, Shield, Code, TrendingUp, ArrowRight, ExternalLink, ChevronDown } from "lucide-react";
 import dropShadowSvg from "../assets/svg/Drop Shadow.svg";
 import card1Svg from "../assets/benefits/card-1.svg";
 import figma3Svg from "../assets/svg/figma3.svg";
@@ -16,6 +16,7 @@ import matchTradePng from "../assets/svg/matchttrade.png";
 import metaQuotesPng from "../assets/svg/metaquotes.png";
 import techSolPng from "../assets/svg/techsol.png";
 import ClipPathTitle from "./ClipPathTitle";
+import SplitButton from "./ui/SplitButton";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -224,8 +225,8 @@ const Hero = () => {
       className="relative min-h-screen bg-gradient-to-br from-black via-[#0A0F18] to-[#132840] text-white overflow-hidden"
     >
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 via-transparent to-blue-500/5" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-teal-500/10 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#015660]/5 via-transparent to-[#015660]/5" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#015660]/10 via-transparent to-transparent" />
 
       {/* Hero Content */}
       <div className="relative z-10 w-screen h-screen flex items-center justify-center">
@@ -300,12 +301,30 @@ const Hero = () => {
                       Enterprise-grade. Lightning-fast. Bulletproof secure.
                     </span>
                   </p>
-                  <button 
-                    onClick={() => scrollToSection('services-section')}
-                    className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105"
-                  >
-                    Explore Services
-                  </button>
+                  <SplitButton
+                    mainText="Explore Services"
+                    mainAction={() => scrollToSection('services-section')}
+                    dropdownItems={[
+                      {
+                        label: "Risk Management",
+                        action: () => navigate('/services/risk-management'),
+                        icon: <Shield className="w-4 h-4" />
+                      },
+                      {
+                        label: "Platform Support",
+                        action: () => navigate('/services/platform-support'),
+                        icon: <Settings className="w-4 h-4" />
+                      },
+                      {
+                        label: "Custom Development",
+                        action: () => navigate('/services/custom-development'),
+                        icon: <Code className="w-4 h-4" />
+                      }
+                    ]}
+                    variant="hero"
+                    size="lg"
+                    className="hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
               </div>
               
@@ -432,7 +451,7 @@ const Hero = () => {
             <div 
               className="absolute inset-0 w-full h-full mix-blend-multiply opacity-40"
               style={{
-                background: 'linear-gradient(45deg, rgba(30, 64, 175, 0.6) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(30, 64, 175, 0.4) 100%)'
+                background: 'linear-gradient(45deg, rgba(1, 86, 96, 0.6) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(1, 86, 96, 0.4) 100%)'
               }}
             />
             
@@ -446,18 +465,18 @@ const Hero = () => {
                   conic-gradient(
                     from 45deg at 30% 50%, 
                     transparent 0deg, 
-                    rgba(30, 64, 175, 0.6) 30deg, 
+                    rgba(1, 86, 96, 0.6) 30deg, 
                     rgba(255, 255, 255, 0.3) 60deg, 
-                    rgba(30, 64, 175, 0.6) 90deg, 
+                    rgba(1, 86, 96, 0.6) 90deg, 
                     transparent 120deg, 
                     transparent 360deg
                   ),
                   conic-gradient(
                     from 135deg at 70% 50%, 
                     transparent 0deg, 
-                    rgba(30, 64, 175, 0.4) 45deg, 
+                    rgba(1, 86, 96, 0.4) 45deg, 
                     rgba(255, 255, 255, 0.4) 90deg, 
-                    rgba(30, 64, 175, 0.4) 135deg, 
+                    rgba(1, 86, 96, 0.4) 135deg, 
                     transparent 180deg, 
                     transparent 360deg
                   )
@@ -475,12 +494,30 @@ const Hero = () => {
                   Built on enterprise-grade infrastructure that powers the world's most demanding financial applications
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                  <button 
-                    onClick={() => navigate('/services')}
-                    className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 text-lg"
-                  >
-                    Explore Our Solutions
-                  </button>
+                  <SplitButton
+                    mainText="Explore Our Solutions"
+                    mainAction={() => navigate('/services')}
+                    dropdownItems={[
+                      {
+                        label: "View All Services",
+                        action: () => navigate('/services'),
+                        icon: <ArrowRight className="w-4 h-4" />
+                      },
+                      {
+                        label: "Platform Integration",
+                        action: () => navigate('/platform'),
+                        icon: <Settings className="w-4 h-4" />
+                      },
+                      {
+                        label: "Contact Sales",
+                        action: () => navigate('/contact'),
+                        icon: <ExternalLink className="w-4 h-4" />
+                      }
+                    ]}
+                    variant="hero"
+                    size="lg"
+                    className="hover:scale-105 transition-transform duration-300"
+                  />
                   
                 </div>
                 
@@ -494,7 +531,7 @@ const Hero = () => {
                           <img 
                             src={metaQuotesPng} 
                             alt="MetaQuotes" 
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                             loading="lazy"
                           />
                         </div>
@@ -504,7 +541,7 @@ const Hero = () => {
                           <img 
                             src={cdTradePng} 
                             alt="CDTrade" 
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                             loading="lazy"
                           />
                         </div>
@@ -514,7 +551,7 @@ const Hero = () => {
                           <img 
                             src={matchTradePng} 
                             alt="Match Trade" 
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                             loading="lazy"
                           />
                         </div>
@@ -524,7 +561,7 @@ const Hero = () => {
                           <img 
                             src={cdTradesPng} 
                             alt="CDTrades" 
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                             loading="lazy"
                           />
                         </div>
@@ -534,7 +571,7 @@ const Hero = () => {
                           <img 
                             src={techSolPng} 
                             alt="Tech Solutions" 
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                             loading="lazy"
                           />
                         </div>
@@ -548,7 +585,7 @@ const Hero = () => {
                           <img 
                             src={metaQuotesPng} 
                             alt="MetaQuotes" 
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                             loading="lazy"
                           />
                         </div>
@@ -558,7 +595,7 @@ const Hero = () => {
                           <img 
                             src={cdTradePng} 
                             alt="CDTrade" 
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                             loading="lazy"
                           />
                         </div>
@@ -568,7 +605,7 @@ const Hero = () => {
                           <img 
                             src={matchTradePng} 
                             alt="Match Trade" 
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                             loading="lazy"
                           />
                         </div>
@@ -578,7 +615,7 @@ const Hero = () => {
                           <img 
                             src={cdTradesPng} 
                             alt="CDTrades" 
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                             loading="lazy"
                           />
                     </div>
@@ -588,7 +625,7 @@ const Hero = () => {
                           <img 
                             src={techSolPng} 
                             alt="Tech Solutions" 
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                             loading="lazy"
                           />
                         </div>
@@ -609,13 +646,14 @@ const Hero = () => {
       </div>
 
       {/* Geometric Design Section */}
-      <div className="relative w-full h-screen bg-white overflow-hidden">
-        {/* Background Rectangle */}
-        <div className="absolute inset-0 w-full h-full bg-gray-300"></div>
+      <div className="relative w-full h-screen bg-gradient-to-br from-black via-[#0A0F18] to-[#132840] overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#015660]/5 via-transparent to-[#015660]/5" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#015660]/10 via-transparent to-transparent" />
         
         {/* Vector 2 - Large curved shape */}
         <div 
-          className="absolute border border-[#10126E]"
+          className="absolute border border-[#015660]/30"
           style={{
             width: '683.82px',
             height: '585.58px',
@@ -626,7 +664,7 @@ const Hero = () => {
         
         {/* Vector 3 - Medium curved shape */}
         <div 
-          className="absolute border border-[#0B0C5F]"
+          className="absolute border border-[#015660]/40"
           style={{
             width: '438.87px',
             height: '193.92px',
@@ -637,7 +675,7 @@ const Hero = () => {
         
         {/* Ellipse 1 - Small circle */}
         <div 
-          className="absolute bg-[#0B0C5F] rounded-full"
+          className="absolute bg-[#015660]/20 rounded-full"
           style={{
             width: '165.85px',
             height: '173.48px',
@@ -648,7 +686,7 @@ const Hero = () => {
         
         {/* Ellipse 2 - Medium circle */}
         <div 
-          className="absolute bg-[#0B0C5F] rounded-full"
+          className="absolute bg-[#015660]/25 rounded-full"
           style={{
             width: '140.34px',
             height: '156.95px',
@@ -659,7 +697,7 @@ const Hero = () => {
         
         {/* Ellipse 3 - Large oval */}
         <div 
-          className="absolute bg-[#0B0C5F] rounded-full"
+          className="absolute bg-[#015660]/15 rounded-full"
           style={{
             width: '1005.74px',
             height: '247.71px',
@@ -670,7 +708,7 @@ const Hero = () => {
         
         {/* Ellipse 4 - Small circle */}
         <div 
-          className="absolute bg-[#0B0C5F] rounded-full"
+          className="absolute bg-[#015660]/30 rounded-full"
           style={{
             width: '134.38px',
             height: '146.82px',
@@ -682,18 +720,140 @@ const Hero = () => {
         {/* Content overlay */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <div className="text-center max-w-4xl px-8">
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-[#0B0C5F] mb-8 leading-tight">
-              Geometric <span className="text-[#10126E]">Design</span>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
+              Geometric <span className="bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent">Design</span>
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto">
               Modern geometric elements creating visual harmony and professional aesthetics
             </p>
-            <button 
-              onClick={() => navigate('/contact')}
-              className="px-8 py-4 bg-[#0B0C5F] hover:bg-[#10126E] text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 text-lg"
-            >
-              Get In Touch
-            </button>
+            <SplitButton
+              mainText="Get In Touch"
+              mainAction={() => navigate('/contact')}
+              dropdownItems={[
+                {
+                  label: "Contact Form",
+                  action: () => navigate('/contact'),
+                  icon: <ArrowRight className="w-4 h-4" />
+                },
+                {
+                  label: "Schedule Meeting",
+                  action: () => navigate('/contact'),
+                  icon: <ExternalLink className="w-4 h-4" />
+                },
+                {
+                  label: "View Portfolio",
+                  action: () => navigate('/showcase'),
+                  icon: <Play className="w-4 h-4" />
+                }
+              ]}
+              variant="hero"
+              size="lg"
+              className="hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Window Size Section with Gradient Rope Effects */}
+      <div className="relative w-full h-screen bg-gradient-to-br from-black via-[#0A0F18] to-[#132840] overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#015660]/5 via-transparent to-[#015660]/5" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#015660]/10 via-transparent to-transparent" />
+        
+        {/* Gradient Rope Effects */}
+        <div className="absolute inset-0">
+          {/* Main rope effect - diagonal */}
+          <div 
+            className="absolute w-full h-full opacity-30"
+            style={{
+              background: `
+                linear-gradient(45deg, transparent 0%, rgba(1, 86, 96, 0.3) 25%, rgba(1, 86, 96, 0.6) 50%, rgba(1, 86, 96, 0.3) 75%, transparent 100%),
+                linear-gradient(-45deg, transparent 0%, rgba(1, 86, 96, 0.2) 30%, rgba(1, 86, 96, 0.4) 60%, rgba(1, 86, 96, 0.2) 90%, transparent 100%)
+              `,
+              filter: 'blur(1px)'
+            }}
+          />
+          
+          {/* Secondary rope effect - curved */}
+          <div 
+            className="absolute w-full h-full opacity-25"
+            style={{
+              background: `
+                radial-gradient(ellipse 800px 200px at 20% 30%, rgba(1, 86, 96, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse 600px 150px at 80% 70%, rgba(1, 86, 96, 0.3) 0%, transparent 50%)
+              `,
+              filter: 'blur(2px)'
+            }}
+          />
+          
+          {/* Accent rope lines */}
+          <div 
+            className="absolute w-full h-full opacity-20"
+            style={{
+              background: `
+                conic-gradient(from 0deg at 25% 25%, transparent 0deg, rgba(1, 86, 96, 0.5) 45deg, transparent 90deg),
+                conic-gradient(from 180deg at 75% 75%, transparent 0deg, rgba(1, 86, 96, 0.4) 60deg, transparent 120deg)
+              `,
+              filter: 'blur(1.5px)'
+            }}
+          />
+        </div>
+        
+        {/* Content overlay */}
+        <div className="absolute inset-0 flex items-center justify-center z-10">
+          <div className="text-center max-w-6xl mx-auto px-8">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
+              Window <span className="bg-gradient-to-r from-[#015660] to-[#015660]/70 bg-clip-text text-transparent">Dimensions</span>
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-4xl mx-auto">
+              Responsive design that adapts seamlessly across all screen sizes and devices
+            </p>
+            
+            {/* Window size indicators */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <div className="bg-black/20 backdrop-blur-sm border border-[#015660]/30 rounded-lg p-6">
+                <h3 className="text-2xl font-bold text-white mb-2">Mobile</h3>
+                <p className="text-[#015660] font-semibold">320px - 768px</p>
+                <p className="text-gray-300 text-sm mt-2">Optimized for smartphones and tablets</p>
+              </div>
+              
+              <div className="bg-black/20 backdrop-blur-sm border border-[#015660]/30 rounded-lg p-6">
+                <h3 className="text-2xl font-bold text-white mb-2">Desktop</h3>
+                <p className="text-[#015660] font-semibold">1024px - 1920px</p>
+                <p className="text-gray-300 text-sm mt-2">Perfect for laptops and monitors</p>
+              </div>
+              
+              <div className="bg-black/20 backdrop-blur-sm border border-[#015660]/30 rounded-lg p-6">
+                <h3 className="text-2xl font-bold text-white mb-2">Ultra-wide</h3>
+                <p className="text-[#015660] font-semibold">1920px+</p>
+                <p className="text-gray-300 text-sm mt-2">Enhanced for large displays</p>
+              </div>
+            </div>
+            
+            <SplitButton
+              mainText="Learn More"
+              mainAction={() => navigate('/contact')}
+              dropdownItems={[
+                {
+                  label: "About Our Technology",
+                  action: () => navigate('/about'),
+                  icon: <Code className="w-4 h-4" />
+                },
+                {
+                  label: "Platform Features",
+                  action: () => navigate('/platform'),
+                  icon: <Settings className="w-4 h-4" />
+                },
+                {
+                  label: "Get Started",
+                  action: () => navigate('/contact'),
+                  icon: <ArrowRight className="w-4 h-4" />
+                }
+              ]}
+              variant="hero"
+              size="lg"
+              className="hover:scale-105 transition-transform duration-300"
+            />
           </div>
         </div>
       </div>
