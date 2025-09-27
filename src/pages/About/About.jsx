@@ -19,6 +19,7 @@ import {
   Target
 } from 'lucide-react';
 import ringPng from '../../assets/svg/RING.png';
+import curvedlinesPng from '../../assets/svg/curvedlines.png';
 import '../../styles/about.css';
 
 if (typeof window !== 'undefined') {
@@ -451,6 +452,21 @@ const About = () => {
 
   return (
     <section ref={sectionRef} className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 text-gray-900">
+      {/* Decorative Element with Curved Lines */}
+      <div 
+        className="absolute left-0 top-8 w-[183px] h-[913px] rounded-[92px] z-0"
+        style={{
+          background: 'linear-gradient(180deg, #008290 4.2%, #008290 31.75%, #00262A 90.51%)'
+        }}
+      >
+        <img 
+          src={curvedlinesPng} 
+          alt="Curved Lines Decoration" 
+          className="w-full h-full object-cover rounded-[92px] opacity-80"
+          loading="lazy"
+        />
+      </div>
+      
       <HeroSection />
       <HighlightBanner />
       <StatsSection />
