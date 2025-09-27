@@ -262,3 +262,10 @@ body {
 .animate-marquee:hover {
     animation-play-state: paused;
 }
+
+
+/* Radial Gradient Utility */
+
+.bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+}

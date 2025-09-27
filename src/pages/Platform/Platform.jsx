@@ -180,6 +180,19 @@ const Platforms = () => {
 
       {/* Single Unified Section - All Platform Content */}
       <div className="relative mb-16">
+        {/* Dome Light Effect */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Dome Light - Central Glow */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-20">
+            <div className="w-full h-full rounded-full bg-gradient-radial from-teal-400/30 via-blue-500/20 to-transparent blur-3xl"></div>
+          </div>
+          
+          {/* Additional Light Rays */}
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-teal-400/20 blur-2xl"></div>
+          <div className="absolute top-3/4 right-1/4 w-40 h-40 rounded-full bg-blue-400/15 blur-2xl"></div>
+          <div className="absolute bottom-1/4 left-1/3 w-28 h-28 rounded-full bg-cyan-400/25 blur-xl"></div>
+        </div>
+
         {/* Shadow Background Effect */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -left-16 -top-8 w-96 h-96 opacity-10">
@@ -196,33 +209,33 @@ const Platforms = () => {
         {/* All Platform Cards in One Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 relative z-10">
           {/* MT4 Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <Card 
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <Card 
               className="bg-slate-900/70 backdrop-blur-sm border border-teal-500/30 hover:border-teal-400/50 h-full cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
-              onClick={() => handlePlatformClick('MT4')}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === 'Enter' && handlePlatformClick('MT4')}
-            >
-              <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle className="text-white">MetaTrader 4 (MT4)</CardTitle>
-                <ExternalLink className="w-5 h-5 text-gray-400" />
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-300 mb-4">
-                  A widely used Forex trading & EA platform (forex-first, algorithmic trading, market of indicators). Use MT4 when you want mature forex-focused support.
-                </p>
-                <div className="flex items-center text-blue-400 text-sm font-medium">
-                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+            onClick={() => handlePlatformClick('MT4')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && handlePlatformClick('MT4')}
+          >
+            <CardHeader className="flex flex-row items-center justify-between">
+              <CardTitle className="text-white">MetaTrader 4 (MT4)</CardTitle>
+              <ExternalLink className="w-5 h-5 text-gray-400" />
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-300 mb-4">
+                A widely used Forex trading & EA platform (forex-first, algorithmic trading, market of indicators). Use MT4 when you want mature forex-focused support.
+              </p>
+              <div className="flex items-center text-blue-400 text-sm font-medium">
+                Learn More <ArrowRight className="w-4 h-4 ml-1" />
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
 
           {/* MT5 Card */}
           <motion.div
@@ -231,27 +244,27 @@ const Platforms = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-              <Card 
+            <Card 
                 className="bg-slate-900/70 backdrop-blur-sm border border-teal-500/30 hover:border-teal-400/50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                onClick={() => handlePlatformClick('MT5')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && handlePlatformClick('MT5')}
-              >
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <CardTitle className="text-white">MetaTrader 5 (MT5)</CardTitle>
-                  <ExternalLink className="w-5 h-5 text-gray-400" />
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-300 mb-4">
-                    MetaQuotes' multi-asset next-gen platform (stocks, futures, FX, more order types and Market Depth features). Use MT5 when the broker/exchange needs multi-asset/exchange-grade features.
-                  </p>
-                  <div className="flex items-center text-blue-400 text-sm font-medium">
-                    Learn More <ArrowRight className="w-4 h-4 ml-1" />
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+              onClick={() => handlePlatformClick('MT5')}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && handlePlatformClick('MT5')}
+            >
+              <CardHeader className="flex flex-row items-center justify-between">
+                <CardTitle className="text-white">MetaTrader 5 (MT5)</CardTitle>
+                <ExternalLink className="w-5 h-5 text-gray-400" />
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-300 mb-4">
+                  MetaQuotes' multi-asset next-gen platform (stocks, futures, FX, more order types and Market Depth features). Use MT5 when the broker/exchange needs multi-asset/exchange-grade features.
+                </p>
+                <div className="flex items-center text-blue-400 text-sm font-medium">
+                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
 
           {/* DXtrade Card */}
           <motion.div
@@ -260,86 +273,78 @@ const Platforms = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-              <Card 
+            <Card 
                 className="bg-slate-900/70 backdrop-blur-sm border border-teal-500/30 hover:border-teal-400/50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                onClick={() => handlePlatformClick('DXtrade')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && handlePlatformClick('DXtrade')}
-              >
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <CardTitle className="text-white">DXtrade</CardTitle>
-                  <ExternalLink className="w-5 h-5 text-gray-400" />
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-300 mb-4">
-                    A modern multi-asset trading platform stack for brokers and banks with quick time-to-market and built-in risk tools; often used by brokers that want a branded web + mobile offering.
-                  </p>
-                  <div className="flex items-center text-blue-400 text-sm font-medium">
-                    Learn More <ArrowRight className="w-4 h-4 ml-1" />
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+              onClick={() => handlePlatformClick('DXtrade')}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && handlePlatformClick('DXtrade')}
+            >
+              <CardHeader className="flex flex-row items-center justify-between">
+                <CardTitle className="text-white">DXtrade</CardTitle>
+                <ExternalLink className="w-5 h-5 text-gray-400" />
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-300 mb-4">
+                  A modern multi-asset trading platform stack for brokers and banks with quick time-to-market and built-in risk tools; often used by brokers that want a branded web + mobile offering.
+                </p>
+                <div className="flex items-center text-blue-400 text-sm font-medium">
+                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
 
           {/* FIX & Vendor APIs Card */}
-          <motion.div
+        <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            viewport={{ once: true }}
-          >
+          viewport={{ once: true }}
+        >
             <Card className="bg-slate-900/70 backdrop-blur-sm border border-teal-500/30 hover:border-teal-400/50 h-full">
-              <CardHeader>
-                <CardTitle className="text-white">FIX & Vendor APIs</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-300">
-                  Institutional integrations commonly use the FIX protocol and platform APIs/bridges for order/exec and liquidity connectivity. We provide a technical onboarding checklist and test plan.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
+            <CardHeader>
+              <CardTitle className="text-white">FIX & Vendor APIs</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-300">
+                Institutional integrations commonly use the FIX protocol and platform APIs/bridges for order/exec and liquidity connectivity. We provide a technical onboarding checklist and test plan.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
 
           {/* Managed Bridges Card */}
-          <motion.div
+        <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            viewport={{ once: true }}
-          >
+          viewport={{ once: true }}
+        >
             <Card className="bg-slate-900/70 backdrop-blur-sm border border-teal-500/30 hover:border-teal-400/50 h-full">
-              <CardHeader>
-                <CardTitle className="text-white">Managed Bridges</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-300">
-                  We offer managed bridges to liquidity providers, ensuring reliable and low-latency connectivity.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
+            <CardHeader>
+              <CardTitle className="text-white">Managed Bridges</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-300">
+                We offer managed bridges to liquidity providers, ensuring reliable and low-latency connectivity.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
         </div>
       </div>
 
-        <motion.div 
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <Button 
-            variant="hero" 
-            size="lg" 
-            onClick={handleDownloadSpec}
-            className="hover:scale-105 transition-all duration-300"
-          >
-            <Download className="mr-2 w-5 h-5" />
-            Download Integration Spec
-          </Button>
-        </motion.div>
-      </div>
+      <motion.div 
+        className="text-center"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        viewport={{ once: true }}
+      >
+          
+      </motion.div>
+    </div>
 
     {/* Platform Details Modal */}
     <AnimatePresence>

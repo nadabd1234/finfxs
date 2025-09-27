@@ -110,7 +110,7 @@ const ServicesHero = () => {
         >
           No credit card required • 7-days free trial
         </motion.p>
-      </div>
+            </div>
 
     </div>
   );
